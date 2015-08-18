@@ -1,3 +1,6 @@
+Accounts.config({
+	forbidClientAccountCreation: true
+});
 Accounts.onCreateUser(function(options, user) {
 
 	user.profile = {

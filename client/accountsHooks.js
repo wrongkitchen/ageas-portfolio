@@ -16,7 +16,6 @@ AutoForm.addHooks('register-form', {
 		}
 	},
     onSuccess: function(method, result) {
-    	console.log(result);
     	Router.go('/');
     }
 });
