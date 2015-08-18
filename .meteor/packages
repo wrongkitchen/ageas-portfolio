@@ -1,3 +1,11 @@
 standard-app-packages
 iron:router
 twbs:bootstrap
+accounts-password
+alanning:roles
+less
+accounts-base
+aldeed:autoform
+aldeed:collection2
+email
+matb33:collection-hooks
