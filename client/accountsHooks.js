@@ -1,3 +1,6 @@
+Accounts.onResetPasswordLink(function(_token, _done){
+	Session.set('resetToken', _token);
+});
 Accounts.onEmailVerificationLink(function(token, done){
 	Accounts.verifyEmail(token, function(err){
 		if(!err){

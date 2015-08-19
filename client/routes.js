@@ -4,6 +4,8 @@ Router.configure({
 });
 Router.route('/', { name: 'landing', controller: 'MainController' });
 Router.route('/register', { name: 'register', controller: 'GuestController' });
+Router.route('/forget-password', { name: 'forgetPassword', controller: 'GuestController' });
+Router.route('/reset-password', { name: 'resetPassword', controller: 'GuestController' });
 
 MemberController = RouteController.extend({
 	onBeforeAction: function () {
@@ -26,6 +28,6 @@ MainController = RouteController.extend({
 		if(Meteor.userId())
 			this.render('home');
 		else
-			this.render('login');
+			this.render('landing');
 	}
 });
