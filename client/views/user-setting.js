@@ -1,4 +1,8 @@
 Template.userSetting.events({
+	'click #userSettingPopup button.close': function(){
+		$('#change-password')[0].reset()
+		$('#userSettingPopup .form-group').removeClass('has-error');
+	},
 	'click #logoutBtn': function(){
 		Meteor.logout(function(err){
 			if(err) console.log(err);
