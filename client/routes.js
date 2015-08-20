@@ -7,6 +7,8 @@ Router.route('/register', { name: 'register', controller: 'GuestController' });
 Router.route('/forget-password', { name: 'forgetPassword', controller: 'GuestController' });
 Router.route('/reset-password', { name: 'resetPassword', controller: 'GuestController' });
 
+Router.route('/image-uploader', { name: 'imageUploader', controller: 'MemberController' });
+
 MemberController = RouteController.extend({
 	onBeforeAction: function () {
 		if(Meteor.userId())
