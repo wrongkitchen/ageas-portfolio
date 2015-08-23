@@ -2,6 +2,20 @@
 	<div class="container">
 		<h3>Image uploader</h3>
 		<hr>
-		<input type='file' name='image' class='imageInput'>
+		{{#each allImages }}
+			<img src="{{ getURL }}" style="max-width:100px;" alt="" />
+		{{/each }}
+		<hr>
+		<form id="fileUploadForm">
+			<label for="editImage" class="btn btn-default"><input id="editImage" type='file' name='image' class='hidden'>Choose file</label>
+		</form>
+		<div class="{{ imageUploaded }}">
+			<hr>
+			<img id="previewImage" src="{{ previewImageSrc }}" alt="">
+			<hr>
+			<button id="saveImageSize" class="btn btn-primary">Save</button>
+		</div>
+		<h3>Text editor tester</h3>
+		<div id="demo" class="article demo" style="width:500px; height:300px;padding:10px;border:1px dashed black;"></div>
 	</div>
 </template>

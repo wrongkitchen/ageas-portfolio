@@ -12,3 +12,10 @@ matb33:collection-hooks
 themeteorchef:bert
 cfs:standard-packages
 cfs:filesystem
+mrt:jquery-jcrop
+cfs:graphicsmagick
+mediumeditor:mediumeditor
+meteorhacks:npm
+
+
+npm-container
