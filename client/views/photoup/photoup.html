@@ -1,0 +1,9 @@
+<template name="photoup">
+	<h1>Photo up widget</h1>
+	<hr>
+	{{#each allImages }}
+		<img src="{{ getURL }}" style="max-width:100px;" alt="" />
+	{{/each }}
+	<hr>
+	{{> photoUp photoUpOptions}}
+</template>

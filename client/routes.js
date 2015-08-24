@@ -8,6 +8,7 @@ Router.route('/forget-password', { name: 'forgetPassword', controller: 'GuestCon
 Router.route('/reset-password', { name: 'resetPassword', controller: 'GuestController' });
 
 Router.route('/image-uploader', { name: 'imageUploader', controller: 'MemberController' });
+Router.route('/photo-up', { name: 'photoup', controller: 'MemberController' });
 
 MemberController = RouteController.extend({
 	onBeforeAction: function () {
