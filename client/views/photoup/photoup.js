@@ -2,7 +2,7 @@ Template.photoup.helpers({
 	allImages: function(){ 
 		return Images.find(); 
 	},
-	getURL: function(){ return '/cfs/files/images/' + this._id; },
+	getURL: function(){ return this.url(); },
 	photoUpOptions: function(){
 		return {
 			loadImage: {
