@@ -1,6 +1,7 @@
 Meteor.startup(function () {
 
-	process.env.MAIL_URL = "smtp://wkc.kenji@gmail.com:CA7BSdYgpDu5OvxZEeTLYw@smtp.mandrillapp.com:587/";
+	if(!process.env.MAIL_URL && Meteor.settings.MAIL_URL) 
+		process.env.MAIL_URL = Meteor.settings.MAIL_URL;
 
 	// By default, the email is sent from no-reply@meteor.com. If you wish to receive email from users asking for help with their account, be sure to set this to an email address that you can receive email at.
 	Accounts.emailTemplates.from = 'Ageas <no-reply@ageas.com>';

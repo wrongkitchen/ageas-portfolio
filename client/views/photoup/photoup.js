@@ -2,7 +2,10 @@ Template.photoup.helpers({
 	allImages: function(){ 
 		return Images.find(); 
 	},
-	getURL: function(){ return '/cfs/files/images/' + this._id; },
+	getURL: function(){ 
+		// return '/cfs/files/images/' + this._id; 
+		return this.url();
+	},
 	photoUpOptions: function(){
 		return {
 			loadImage: {
@@ -17,6 +20,7 @@ Template.photoup.helpers({
 					Bert.alert(err.reason, 'danger', 'growl-top-right');
 				else {
 					Images.insert(photo.src, function (err, fileObj) {
+						console.log(fileObj);
 						if (err){
 							Bert.alert(err.reason, 'danger', 'growl-top-right');
 						} else {
