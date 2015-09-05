@@ -9,8 +9,9 @@ Meteor.methods({
 		return Accounts.createUser(doc);
 	},
 	cropImage: function(imageID, cp){
-		var readStream = Images.findOne(imageID).createReadStream('images');
-		var writeStream = Images.findOne(imageID).createWriteStream('images');
+		var image = Images.findOne(imageID);
+		var readStream = image.createReadStream('images');
+		var writeStream = image.createWriteStream('images');
 		if(cp.w == 0 || cp.h == 0) return false;
 		gm(readStream).crop(cp.w, cp.h, cp.x, cp.y).stream().pipe(writeStream);
 		return imageID;

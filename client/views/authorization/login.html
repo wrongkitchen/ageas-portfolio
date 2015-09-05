@@ -8,7 +8,30 @@
 				<button class="btn btn-primary" type="submit">Submit</button>
 			</div>
 		</form>
-		<a class="btn btn-primary" href="register">Register</a>
-		<a class="btn btn-primary" href="forget-password">Forget password</a>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register">Register</button>
+		<!-- <a class="btn btn-primary" href="#register">Register</a> -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#forgetPassword">Forget password</button>
+		<!-- <a class="btn btn-primary" href="forget-password">Forget password</a> -->
 	</div>
+
+	<div class="modal fade" id="register" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					{{>register}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="forgetPassword" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					{{>forgetPassword}}
+				</div>
+			</div>
+		</div>
+	</div>
+
 </template>
