@@ -1,4 +1,151 @@
 html, body{ width:100%; height:100%; }
+body{ 
+	font-family: 'Source Sans Pro', "MHei", "Helvetica", "Arial", sans-serif; 
+	background-color: #f7f7f7;
+}
 .container-fixed{ margin: 0 auto; width: 960px; }
-.wrapper{ width:100%; height:auto; min-height:100%; position:relative; }
-#mainFooter{ position:absolute; bottom:0; width:100%; height:20px; background-color: #000; color:#FFF; }
+.wrapper{ 
+	width:100%; height:100%; min-height:850px; position:relative; 
+	padding: 110px 0 0 0;
+}
+#mainFooter{ 
+	position:absolute; bottom:0; width:100%; height:20px; min-width:960px;
+	background-color: #6dc2d4; color:#FFF; text-align: center;
+	padding:40px 0px 100px 0px; font-size:14px;
+}
+.form-control{ border-radius: 0; border:none; }
+a{ color:#ff6633; font-size:14px; text-decoration: underline; }
+.btn{ color:#FFF; padding: 5px 25px; }
+.btn-primary{ 
+	background-color: #999933; border: none; 
+	&.orange{ background-color: #ff6633; }
+}
+.btn-default{ background-color: #999999; border: none; }
+#mainHeader{ 
+	position:absolute; top:0; left:0; width:100%; 
+	min-width:960px; height:105px; background-color: #fff;
+	.rainbowBar{
+		width:100%; height:5px;
+		background-image: url(/images/rainbow-bar.jpg); 
+		background-position: bottom center; background-repeat: no-repeat;
+	}
+	.starLogo{ 
+		width:208px; height:105px; 
+		background-image: url(/images/star-logo.jpg);
+	}
+	.ageasLogo{
+		width:128px; height:105px;
+		background-image: url(/images/ageas-logo.jpg);
+	}
+	.headerNav{ 
+		height:105px; display:table-row;
+		.navBtn{ 
+			margin-right:30px; display:table-cell; height:105px; vertical-align: middle;
+			a{ 
+				text-decoration: none; color:#000; 
+				&:hover{ text-decoration: underline; }
+			}
+			&.text{ padding-right:30px; }
+			// &.shareIcon.facebook{ padding-right:5px; }
+		}
+	}
+}
+.modal-content{ border-radius: 0; }
+.btn{ border-radius: 0; }
+#register, #forgetPassword{
+	h3{ margin-top:0; margin-bottom:70px; font-size:36px; font-weight: bold; }
+	a.closePopup{ 
+		position: absolute; top: 20px; right: 20px; 
+		color: #FFF; font-size: 26px; text-decoration: none;
+	}
+	.buttonWrap{ margin-top:40px; }
+}
+#register{
+	.modal-content{ background-color: #ff6633; color:#FFF; }
+	.form-group{ color:#000; }
+	.modal-body{ padding:80px 60px; }
+	.passwordWrap{ margin-top:40px; }
+}
+#forgetPassword{
+	color:#FFF; 
+	.modal-body{ padding:80px 60px; background-color: #333333; }
+}
+#loginSection{ 
+	height:100%; padding-bottom:140px; background-color: #fff;
+	.loginWrapper{ 
+		background-image: url(/images/login-bg.jpg); width:100%; height:100%;
+		background-position: center bottom; background-repeat: no-repeat;
+		background-size: cover; padding-top:80px; min-width:960px;
+	}
+	h3{ color:#cc3366; font-size:60px; font-weight:bold; margin-bottom:25px; }
+	p{ margin-bottom: 60px; }
+	#login-form{ width:280px; }
+	.buttonWrap{ margin-top:20px; }
+}
+#homeSection{
+	padding-bottom:300px; 
+	.row{ 
+		margin-bottom:5px; 
+		img.shadow{ 
+			-webkit-box-shadow: 2px 2px 5px 0px #bbb;
+			box-shadow: 2px 2px 5px 0px #bbb; 
+		}
+	}
+	h3{ margin:100px 0; text-align: center; font-weight: bold; font-size:35px; }
+	strong{ margin:10px 0 10px 0; display:block; font-size:18px; }
+	.buttonWrap{ 
+		margin-top:60px; 
+		a{ text-decoration: none; }
+	}
+}
+#aboutSection{
+	padding-bottom:140px; 
+	h3{ font-weight: bold; }
+	.firstRow, .secondRow, .thridRow{ min-width:960px; }
+	.firstRow{ padding: 140px 0; background-color:#6cc; }
+	.secondRow{ 
+		height:446px; background-image: url(/images/about-bg-2.png); 
+		background-repeat: no-repeat; background-position: center bottom;
+		.textWrap{ padding-top:70px; margin-bottom:70px; }
+	}
+	.thridRow{ 
+		.container.container-fixed{ position:relative; }
+		height: 616px; background-image: url(/images/about-bg-3.jpg); 
+		background-repeat: no-repeat; background-position: center bottom;
+		.textWrap{ position:absolute; top: 180px; left: 1040px; left:570px; width:350px; }
+	}
+}
+#editSection{
+	padding:30px 0 140px 0; background-color: #fff;
+	.thumbnails{ 
+		background-image: url(/images/edit-thumbnail-bg.png); background-color: transparent;
+		background-position: bottom center; background-repeat: repeat-x; 
+		position: absolute; height: 210px; width: 100%; min-width: 960px;
+		z-index: 10;
+	}
+	.tab-content{ padding-top: 204px; }
+	.editThumbnail{ 
+		color:#000;
+		li{ 
+			position: relative;
+			&.active{ 
+				background-color:#F05622; 
+				background-image: url(/images/edit-thumbnail-arrow.jpg);
+				background-position: bottom center; background-repeat: no-repeat;
+			}
+			text-align: center; height:155px;
+			a{ 
+				height:auto; padding:10px 5px; background-color:transparent; 
+				color:#000; text-decoration: none; 
+				.textWrap{ position:absolute; width:100%; text-align: center; left:0; }
+				&.cover .textWrap{ bottom:-40px; }
+				&.profile .textWrap{ bottom:-18px; }
+				&.speaker .textWrap{ bottom:-31px; }
+				&.reference .textWrap{ bottom:-40px; }
+				&.accomplishments .textWrap{ bottom:-35px; }
+				&.speech .textWrap{ bottom:-37px; }
+			}
+		}
+	}
+}
+.sections{ width:100%; height:auto; min-height:100%; position:relative; }

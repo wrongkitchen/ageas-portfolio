@@ -9,3 +9,7 @@ Meteor.publish("userData", function () {
 Meteor.publish('images', function(){ 
 	return Images.find(); 
 });
+
+Meteor.publish('templatesData', function(){ 
+	return TemplateData.find(); 
+});

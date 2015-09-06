@@ -1,16 +1,119 @@
 <template name="editTemplate">
-	<div class="container">
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-			<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-		</ul>
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">home content</div>
-			<div role="tabpanel" class="tab-pane" id="profile">profile content</div>
-			<div role="tabpanel" class="tab-pane" id="messages">messages content</div>
-			<div role="tabpanel" class="tab-pane" id="settings">settings content</div>
+	<div class="sections" id="editSection">
+		<div class="thumbnails">
+			<div class="container container-fixed">
+				<ul class="editThumbnail nav nav-pills nav-justified" role="tablist">
+					<li role="presentation" class="active">
+						<a class="cover" href="#cover" aria-controls="cover" role="tab" data-toggle="tab">
+							<img src="/images/edit-thumbnail-1.png" alt="">
+							<div class="textWrap">1 - 專業封面設計</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a class="profile" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+							<img src="/images/edit-thumbnail-2.png" alt="">
+							<div class="textWrap">2 - 自我介紹</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a class="speaker" href="#speaker" aria-controls="speaker" role="tab" data-toggle="tab">
+							<img src="/images/edit-thumbnail-3.png" alt="">
+							<div class="textWrap">3 - 導師啟發</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a class="reference" href="#reference" aria-controls="reference" role="tab" data-toggle="tab">
+							<img src="/images/edit-thumbnail-4.png" alt="">
+							<div class="textWrap">4 - 最強紀錄</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a class="accomplishments" href="#accomplishments" aria-controls="accomplishments" role="tab" data-toggle="tab">
+							<img src="/images/edit-thumbnail-5.png" alt="">
+							<div class="textWrap">5 - 活動相冊</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a class="speech" href="#speech" aria-controls="speech" role="tab" data-toggle="tab">
+							<img src="/images/edit-thumbnail-6.png" alt="">
+							<div class="textWrap">6 - 學長的話</div>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
+		<div class="tab-content">
+			<div role="tabpanel" class="editableTemplate tab-pane active" id="cover">
+				{{> coverTemplate }}
+				<div class="templateControl">
+					<div class="container container-fixed">
+						<div class="pull-left">
+							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							<button class="btn btn-primary">下載</button>
+						</div>
+						<div class="pull-right">
+							<div class="pull-right">
+								<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="editableTemplate tab-pane" id="profile">
+				{{> profileTemplate }}
+				<div class="templateControl">
+					<div class="container container-fixed">
+						<div class="pull-left">
+							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+						</div>
+						<div class="pull-right">
+							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="editableTemplate tab-pane" id="speaker">
+				{{> messageTemplate }}
+				<div class="templateControl">
+					<div class="container container-fixed">
+						<div class="pull-left">
+							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+						</div>
+						<div class="pull-right">
+							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="reference">
+			</div>
+			<div role="tabpanel" class="editableTemplate tab-pane" id="accomplishments">
+				{{> accomplishmentsTemplate }}
+				<div class="templateControl">
+					<div class="container container-fixed">
+						<div class="pull-left">
+							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+						</div>
+						<div class="pull-right">
+							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="editableTemplate tab-pane" id="speech">
+				{{> speechTemplate }}
+				<div class="templateControl">
+					<div class="container container-fixed">
+						<div class="pull-left">
+							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+						</div>
+						<div class="pull-right">
+							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{> footer }}
 	</div>
 </template>

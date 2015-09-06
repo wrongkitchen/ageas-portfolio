@@ -55,11 +55,9 @@ Template.imageUploader.onRendered(function(){
     medium.subscribe('editableInput', function (event, editable) {
     	var $target = $(event.target);
     	if ($target[0].scrollHeight > $target.innerHeight()) {
-			$target.css('border', '1px solid red');
-			$target.css('overflow-y', 'scroll');
+			$target.addClass('error');
 		} else {
-			$target.css('border', '1px dashed black');
-			$target.css('overflow', 'hidden');
+			$target.removeClass('error');
 		}
 	});
 });

@@ -1,9 +1,69 @@
 <template name="home">
-	<div class="container-fixed">
-		<h3>Hello user</h3>
-		<button data-toggle="modal" data-target="#userSettingPopup" class="btn btn-primary">User settings</button>
-		<hr>
-		<a class="btn btn-primary" href="/image-uploader">Image uploader</a>
-		<a class="btn btn-primary" href="/photo-up">Photo up</a>
+	<div id="homeSection" class="sections">
+		<div class="container container-fixed">
+			<h3><img src="/images/intro-title.png" alt=""></h3>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<img src="/images/intro-thumbnail-1.png" alt="">
+				</div>
+				<div class="col-xs-6 text-left">
+					<strong>1 - 專業封面設計</strong> 
+					<p>成就你最強「個人名片」<br />不同特效濾鏡，多款風格設計</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<img class="shadow" src="/images/intro-thumbnail-2.png" alt="">
+				</div>
+				<div class="col-xs-6 text-left">
+					<strong>2 - 自我介紹</strong> 
+					<p>九型人格測驗 解碼你的最強優勢<br />助你更有系統地詮釋自己，有利他人瞬速了解你的強項</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<img class="shadow" src="/images/intro-thumbnail-3.png" alt="">
+				</div>
+				<div class="col-xs-6 text-left">
+					<strong>3 - 導師啟發</strong> 
+					<p>記錄所學所得、每個工作坊的感受與啟發<br />最強導師如何提昇你的魅力</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<img class="shadow" src="/images/intro-thumbnail-4.png" alt="">
+				</div>
+				<div class="col-xs-6 text-left">
+					<strong>4 - 最強紀錄</strong> 
+					<p>完美整合你的推薦信和證書<br />你的出眾．一目瞭然</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<img class="shadow" src="/images/intro-thumbnail-5.png" alt="">
+				</div>
+				<div class="col-xs-6 text-left">
+					<strong>5 - 活動相冊</strong> 
+					<p>助你輕鬆上傳精彩體驗，完善紀錄與實證</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<img class="shadow" src="/images/intro-thumbnail-6.png" alt="">
+				</div>
+				<div class="col-xs-6 text-left">
+					<strong>6 - 學長的話</strong> 
+					<p>學長留言印證你的實力，全面建立你的優秀形象</p>
+				</div>
+			</div>
+			<div class="buttonWrap text-center">
+				<a class="btn btn-primary orange" href="/edit-template">開始建立</a>
+				<button data-toggle="modal" data-target="#userSettingPopup" class="btn btn-primary">User settings</button>
+			</div>
+		</div>
+		{{> footer }}
 	</div>
 </template>
+<!-- <hr>
+<a class="btn btn-primary" href="/image-uploader">Image uploader</a>
+<a class="btn btn-primary" href="/photo-up">Photo up</a> -->

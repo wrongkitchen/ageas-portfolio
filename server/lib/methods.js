@@ -15,5 +15,14 @@ Meteor.methods({
 		if(cp.w == 0 || cp.h == 0) return false;
 		gm(readStream).crop(cp.w, cp.h, cp.x, cp.y).stream().pipe(writeStream);
 		return imageID;
+	},
+	saveTemplateDatas: function(pObj){
+		var savedModel = TemplateData.findOne({ user: Meteor.userId() });
+		if(savedModel){
+			console.log('modal exist');
+		} else {
+			pObj.user = Meteor.userId();
+			return TemplateData.insert(pObj);
+		}
 	}
 });

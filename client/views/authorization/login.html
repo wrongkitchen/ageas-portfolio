@@ -1,18 +1,29 @@
 <template name="login">
-	<div class="container">
-		<h3>Testing login & register</h3>
-		<form id="login-form" novalidate="novalidate">
-			<div class="form-group"><label for="login-email">Email</label><input type="text" id="login-email" class="form-control"></div>
-			<div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" class="form-control"></div>
-			<div class="form-group">
-				<button class="btn btn-primary" type="submit">Submit</button>
+
+	<div id="loginSection">
+		<div class="loginWrapper">
+			<div class="container container-fixed">
+				<h3><img src="/images/home-title.png" alt=""></h3>
+				<p>一個連結 令你的未來機遇找到你</p>
+				<form id="login-form" novalidate="novalidate">
+					<div class="form-group">
+						<input type="text" id="login-email" class="form-control" placeholder="登入ID">
+					</div>
+					<div class="form-group">
+						<input type="password" id="login-password" class="form-control" placeholder="密碼">
+					</div>
+					<a data-toggle="modal" data-target="#forgetPassword" href="javascript:void(0)">忘記密碼？</a>
+					<div class="buttonWrap">
+						<button class="btn btn-primary orange" type="submit">登入</button>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register">立即登記</button>
+					</div>
+				</form>
+				<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#forgetPassword">Forget password</button> -->
 			</div>
-		</form>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register">Register</button>
-		<!-- <a class="btn btn-primary" href="#register">Register</a> -->
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#forgetPassword">Forget password</button>
-		<!-- <a class="btn btn-primary" href="forget-password">Forget password</a> -->
+		</div>
 	</div>
+	
+	{{> footer }}
 
 	<div class="modal fade" id="register" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
