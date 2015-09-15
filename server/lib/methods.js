@@ -19,7 +19,7 @@ Meteor.methods({
 	saveTemplateDatas: function(pObj){
 		var savedModel = TemplateData.findOne({ user: Meteor.userId() });
 		if(savedModel){
-			console.log('modal exist');
+			return TemplateData.update({ user: Meteor.userId() }, pObj);
 		} else {
 			pObj.user = Meteor.userId();
 			return TemplateData.insert(pObj);

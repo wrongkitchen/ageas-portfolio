@@ -9,17 +9,17 @@ Router.route('/forget-password', { name: 'forgetPassword', controller: 'GuestCon
 Router.route('/reset-password', { name: 'resetPassword', controller: 'GuestController' });
 Router.route('/edit-template', { 
 	name: 'editTemplate', 
-	controller: 'MemberController', 
-	data: function(){ 
-		return TemplateData.findOne({ user: Meteor.userId() }) 
-	} 
+	controller: 'MemberController'
 });
 Router.route('/preview-template', { 
 	name: 'previewTemplate', 
 	controller: 'MemberController',
 	onAfterAction: function(){
         Session.set('hash', this.params.hash);
-	}
+	},
+	data: function(){ 
+		return TemplateData.findOne({ user: Meteor.userId() }) 
+	} 
 });
 // testing
 Router.route('/image-uploader', { name: 'imageUploader', controller: 'MemberController' });
