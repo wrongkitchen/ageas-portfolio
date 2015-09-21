@@ -2,11 +2,11 @@
 	<div class="coverTemplate">
 		<div class="container container-fixed">
 
-			<div class="editComponent uploadBtn"></div>
-
+			<div class="editComponent uploadBtn">
+				{{> photoUp photoUpOptions }}
+			</div>
 
 			<div data-modal-key="user" class="editable user hidden">{{ currentUser._id }}</div>
-
 
 			<div data-modal-key="coverKeywords" data-toggle="tooltip" data-placement="right" title="Tooltip on left" class="editable coverKeywords"></div>
 

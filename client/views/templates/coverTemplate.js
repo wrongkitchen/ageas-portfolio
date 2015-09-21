@@ -1,20 +1,15 @@
-Template.photoup.helpers({
-	allImages: function(){ 
-		return Images.find(); 
-	},
-	getURL: function(){ 
-		// return '/cfs/files/images/' + this._id; 
-		return this.url();
-	},
+Template.coverTemplate.helpers({
 	photoUpOptions: function(){
 		return {
 			loadImage: {
-				maxWidth: 500,
-				maxHeight: 1080
+				maxWidth: 1920,
+				maxHeight: 1920
 			},
 			crop: true,
-			jCrop: { aspectRatio: 16 / 9 },
+			jCrop: { aspectRatio: 1920 / 975, boxWidth: 928 },
 			showInfo: false,
+			showReset: false,
+			showClear: false,
 			callback: function(err, photo){
 				if(err) {
 					Bert.alert(err.reason, 'danger', 'growl-top-right');
@@ -34,4 +29,8 @@ Template.photoup.helpers({
 			}
 		}
 	}
+});
+
+Template.photoUpCaller.onRendered(function(){
+	$('#photoUpPreview').modal();
 });

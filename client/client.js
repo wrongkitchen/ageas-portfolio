@@ -5,3 +5,5 @@ window.fbAsyncInit = function() {
 		xfbml      : true
 	});
 };
+
+Template.photoUpOverride.replaces("photoUp");
