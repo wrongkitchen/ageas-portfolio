@@ -4,25 +4,23 @@
 			<input type="file" id="file-uploader" name="photo-up-image-file" accept="image/*" style="display:none" />
 			<div class="dropbox no-image center-align valign-wrapper z-depth-1 {{photoClass}}">
 				<div class="photo-in valign">
-					<div>{{newDirections}}</div>
+					<!--<div>{{newDirections}}</div>
 					<div>
 						{{{newImage}}}
-					</div>  
+					</div>-->
 				</div>
 			</div>
 		{{else}}
-			<div id="photoUpPreview" class="modal fade">
+			<div class="modal fade photoUpPreview">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title">User setting</h4>
+							<h4 class="modal-title">Crop image</h4>
 						</div>
 						<div class="modal-body">
-							<div class="container-fixed">
-								{{> photoUpCaller }}
-								{{> photoUpImagePreview}}
-							</div>
+							{{> photoUpCaller }}
+							{{> photoUpImagePreview}}
 						</div>
 					</div>
 				</div>
@@ -32,3 +30,47 @@
 </template>
 
 <template name="photoUpCaller"></template>
+
+<template name="photoUpImagePreviewOverride">
+	<div class="card-div center-align {{photoClass}}" style="width:{{imgWidth}}px;">
+		<div class="card {{noContent}} {{fixMaxWidth}} dropbox" style="width:{{imgWidth}}px;">
+			<div class="card-image" style="width:{{imgWidth}}px;">
+				<img id="image-preview" src="{{photo.src}}">
+				<span class="card-title">{{photo.name}}</span>
+				<span class="card-tagline">{{replaceDirections}}</span>
+			</div>
+			{{#if showInfo}}
+				<div class="card-content left-align">
+					<p>
+						<div>
+							{{t9n 'Original File Size'}}: {{filesize}} KB
+						</div>
+						<div>
+							{{t9n 'Image Size'}}: {{photosize}} KB
+						</div>
+						<div class={{badAspectRatio}}>
+							{{t9n 'Dimensions'}}: {{photo.height}}h x {{photo.width}}w
+							{{#if badAspectRatio}}
+								<br/>
+								{{t9n 'Photo is not the required aspect ration'}} {{requiredAspectRatio}}
+							{{/if}}
+						</div>
+					</p>
+				</div>
+			{{/if}}
+			{{#if showAction}}
+				<div class="card-action right-align">
+					{{#if showCrop}}
+						<a class="btn btn-primary crop" href="">{{t9n 'crop'}}</a>
+					{{/if}}
+					{{#if showReset}}
+						<a class="btn btn-primary reset" href="">{{t9n 'reset'}}</a>
+					{{/if}}
+					{{#if showClear}}
+						<a class="btn btn-primary clear" href="">{{t9n 'clear'}}</a>
+					{{/if}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

@@ -4,8 +4,12 @@
 			<div data-modal-key="speechText" class="editable speechText heightFree"></div>
 			<div data-modal-key="speechName" class="editable speechName heightFree"></div>
 			<div class="speechPhoto text-right pull-right">
-				<div class="editComponent uploadBtn"></div>
-				<img src="/images/demo/speech-thumbnail-1.jpg" alt="" class="img-circle" />
+				<div class="editComponent uploadBtn">{{> photoUp photoUpOptions }}</div>
+				{{# if speechImage }}
+					<img src="{{ speechImage }}" alt="" class="img-circle" />
+				{{ else }}
+					<img src="/images/demo/speech-thumbnail-1.jpg" alt="" class="img-circle" />
+				{{/if}}
 			</div>
 		</div>
 	</div>

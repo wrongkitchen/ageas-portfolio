@@ -1,5 +1,5 @@
 <template name="coverTemplate">
-	<div class="coverTemplate">
+	<div class="coverTemplate" style="background-image:url({{ coverTemplateBg }});">
 		<div class="container container-fixed">
 
 			<div class="editComponent uploadBtn">
@@ -23,7 +23,9 @@
 			<div class="coverCircleWrap">
 				<div data-modal-key="coverCircle" data-toggle="tooltip" data-placement="bottom" title="Tooltip on left" class="editable coverCircle"></div>
 			</div>
-
+			<div class="hiddenCanvas">
+				<canvas id="downloadCoverCanvas" width="1920" height="975"></canvas>
+			</div>
 		</div>
 	</div>
 </template>

@@ -9,8 +9,8 @@ Template.photoup.helpers({
 	photoUpOptions: function(){
 		return {
 			loadImage: {
-				maxWidth: 500,
-				maxHeight: 1080
+				maxWidth: 1920,
+				maxHeight: 1920
 			},
 			crop: true,
 			jCrop: { aspectRatio: 16 / 9 },

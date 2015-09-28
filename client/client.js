@@ -7,3 +7,5 @@ window.fbAsyncInit = function() {
 };
 
 Template.photoUpOverride.replaces("photoUp");
+
+Template.photoUpImagePreviewOverride.replaces("photoUpImagePreview");

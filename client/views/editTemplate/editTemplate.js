@@ -1,46 +1,13 @@
 
 Session.set('unsave', false);
 
-var templateDefauleText = {
-    coverCircle: "<p>My Passion And Innovation</p>",
-    coverFooterText: "<p>By taking part in this intern program, I hope to gain better understanding about myself.</p>",
-    coverKeywords: "<p>Creativity｜Adaptation｜Perceptive｜Insight</p>",
-    coverSubTitle1: "<p>Be Extraordinary In a Class by Yourself</p>",
-    coverSubTitle2: "<p>Successfully Obtained Academic Credits</p>",
-    coverSubTitle3: "<p>The Five Things I Want to Accomplish in 2016.</p>",
-    coverTitle: "<p>Endless passion for ideals</p>",
-    profileBlueContent: "<p>I have a clear vision of how the world should be, and respect law and tradition because they exist for a reason. I tend to believe the best of others, and sensitive to their needs and desires. I am considerate, generous, and very reliable.</p> ",
-    profileDescription: "<p>By taking part in this intern program, I hope to gain better understanding about mvyself. Through a series of opportunities and challenges I want to increase self-awareness, and advance my expertise so as to benefit my future career development.</p> ",
-    profileGreenContent: "<p>I wanted to live the life, a different life. I didn't want to go to the same place every day and see the same people and do the same job. I wanted interesting challenges.</p>",
-    profileGreenName: "<p>“Dare to Differ”</p>",
-    profileName: "<p>I am Amy Chan.</p>",
-    profilePurpleContent: "<p>People of this personality type essentially feel that they are worthy in so far as they are helpful to others. Love is their highest ideal. Selflessness is their duty. Giving to others is their reason for being. Involved, socially aware, usually extroverted, Twos are the type of people who remember everyone's birthday and who go the extra mile to help out a co-worker, spouse or friend in need.</p>",
-    speaker1Content: "<p>From Sammy Leung I learned how to train my own quick responses. In my mind he is a smart person. I used to feel being smart is an endowed characteristic. But today he shared some interesting examples in real-time, making me to realize quick responses can be improved by increasing mental awareness of the cause-effect relationship on matters in daily life.</p> ",
-    speaker2Content: "<p>From Vennis Ma I learned a lot about how to best present self image. I used to feel I don't need to pay much attention on self image so long as I am very able in substance. But what the teacher said has influenced me a great deal: \"Focus on self image is not to please others but to respect both others and oneself.\" Looking at how a person presents himself you can infer his ability of managing self.</p>",
-    speaker3Content: "<p>I learned a lot from Wing Lee I really wish someday I could become a successful person like him. Later some schoolmates told me he and I had something in common. That made me very happy. I will double my effort from now on so that I hope someday I can achieve as much as he does.</p> ",
-    speaker4Content: "<p>From speaker Mr. Lai I learned how to deal with pressure. I admire his/her achievement in mountain climbing. Although I usually do not care for athletic activities, B taught me interesting formulas and tips. That makes me feel like wanting to try jogging sometime myself to see whether strengthening faith would help me not give up too easily.</p> ",
-    speaker5Content: "<p>From speaker Mr. Wong I learned to improve my money management quotient. I was not good at managing money before. After learning his tips I feel I can accumulate more wealth by changing a lot of my small habits in daily life. The investment know-hows for beginners he taught also helps me become more reflective.</p> ",
-    speechName: "<p>Kenji Wong</p>",
-    speechText: "<p>See more, work more, and you will gain more</p>",
-    thumbnail1Text: "<p>Your Caption</p>",
-    thumbnail2Text: "<p>Your Caption</p>",
-    thumbnail3Text: "<p>Your Caption</p>",
-    thumbnail4Text: "<p>Your Caption</p>",
-    thumbnail5Text: "<p>Your Caption</p>",
-    thumbnail6Text: "<p>Your Caption</p>",
-    thumbnail7Text: "<p>Your Caption</p>",
-    thumbnail8Text: "<p>Your Caption</p>",
-    thumbnail9Text: "<p>Your Caption</p>",
-    thumbnail10Text: "<p>Your Caption</p>",
-    thumbnail11Text: "<p>Your Caption</p>",
-    thumbnail12Text: "<p>Your Caption</p>"
-}
-
 Tracker.autorun(function(){
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
-        templateData = (templateData) ? templateData : templateDefauleText;
-    _.each(templateData, function(data, index){
-        $('.editable[data-modal-key=' + index +']').html(data);
+    _.each(TemplateDefauleText, function(data, index){
+        if(templateData && templateData[index])
+            $('.editable[data-modal-key=' + index +']').html(templateData[index]);
+        else 
+            $('.editable[data-modal-key=' + index +']').html(data);
     });
 });
 
@@ -50,6 +17,120 @@ Template.editTemplate.helpers({
     }
 });
 Template.editTemplate.events({
+    'click #coverDownloadCaller': function(){
+        var userData = TemplateData.findOne({ user: Meteor.userId() });
+        var coverImage = Images.findOne(userData.coverTemplateBg);
+        var img = new Image();
+            img.onload = function() {
+                // console.log(this.width);
+                // console.log(this.height);
+                $("#downloadCoverCanvas").clearCanvas()
+                $('#downloadCoverCanvas').drawRect({
+                    fillStyle: '#d9d9d9',
+                    x: (1920 / 2), y: (975 / 2),
+                    width: 1920,
+                    height: 975
+                })
+                .drawImage({
+                    source: coverImage.url(),
+                    x: (1920 / 2), y: (975 / 2)
+                })
+                .drawImage({
+                    source: '/images/cover-circle.png',
+                    x: 1138, y: 570,
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#FFF',
+                    fontStyle: 'bold',
+                    x: 491, y: 41,
+                    fontSize: '10.5pt',
+                    fontFamily: 'Times New Roman, Times, serif',
+                    text: userData.coverKeywords.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#FFF',
+                    fontStyle: 'bold',
+                    x: 491, y: 108,
+                    maxWidth:658,
+                    align: 'left',
+                    fontSize: '90px',
+                    fontFamily: 'Times New Roman, Times, serif',
+                    text: userData.coverTitle.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#996699',
+                    x: 491, y: 506,
+                    fontStyle: 'bold',
+                    maxWidth: 608,
+                    align: 'left',
+                    fontSize: '50px',
+                    fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
+                    text: userData.coverSubTitle1.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#cc3366',
+                    x: 491, y: 665,
+                    fontStyle: 'bold',
+                    maxWidth: 608,
+                    align: 'left',
+                    fontSize: '30px',
+                    fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
+                    text: userData.coverSubTitle2.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#ff9933',
+                    x: 491, y: 745,
+                    fontStyle: 'bold',
+                    maxWidth: 608,
+                    align: 'left',
+                    fontSize: '35px',
+                    fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
+                    text: userData.coverSubTitle3.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#ffffff',
+                    x: 491, y: 885,
+                    fontStyle: 'bold',
+                    maxWidth: 608,
+                    align: 'left',
+                    fontSize: '14px',
+                    fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
+                    text: userData.coverFooterText.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                })
+                .drawText({
+                    fillStyle: '#ffffff',
+                    x: 1165, y: 650,
+                    fontStyle: 'bold',
+                    maxWidth: 258,
+                    fontSize: '36px',
+                    fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
+                    text: userData.coverCircle.replace(/<\/?[^>]+(>|$)/g, ""),
+                    fromCenter: false
+                });
+                function OpenInNewTab(url) {
+                    var win = window.open(url, '_blank');
+                    win.focus();
+                }
+                var imgData = $('#downloadCoverCanvas').getCanvasImage('jpeg');
+                OpenInNewTab(imgData);
+            }
+            img.src = coverImage.url();
+    },
+    'click .tabButton': function(event){
+        var href = $(event.currentTarget).attr('href');
+        if(href === '#speech'){
+            Session.set('isPhotoUploadPopup', '.speechTemplate');
+        } else {
+            Session.set('isPhotoUploadPopup', false);
+        }
+    },
     'click .savePreviewBtn': function(){
         if(Session.get('unsave')){
             // save event
@@ -82,10 +163,14 @@ Template.editTemplate.onRendered(function(){
     
     $('[data-toggle="tooltip"]').tooltip();
 
+    Session.set('isPhotoUploadPopup', false);
+
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
-        templateData = (templateData) ? templateData : templateDefauleText;
-    _.each(templateData, function(data, index){
-        $('.editable[data-modal-key=' + index +']').html(data);
+    _.each(TemplateDefauleText, function(data, index){
+        if(templateData && templateData[index])
+            $('.editable[data-modal-key=' + index +']').html(templateData[index]);
+        else
+            $('.editable[data-modal-key=' + index +']').html(data);
     });
 
     medium = new MediumEditor('.editable', {

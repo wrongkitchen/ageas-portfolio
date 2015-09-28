@@ -12,14 +12,19 @@ Router.route('/edit-template', {
 	controller: 'MemberController'
 });
 Router.route('/preview-template', { 
-	name: 'previewTemplate', 
 	controller: 'MemberController',
 	onAfterAction: function(){
         Session.set('hash', this.params.hash);
+	}
+});
+Router.route('/preview-template/:_id', { 
+	template: 'preview-template',
+	data: function(){
+		return { previewUserId: this.params._id };
 	},
-	data: function(){ 
-		return TemplateData.findOne({ user: Meteor.userId() }) 
-	} 
+	onAfterAction: function(){
+        Session.set('hash', this.params.hash);
+	}
 });
 // testing
 Router.route('/image-uploader', { name: 'imageUploader', controller: 'MemberController' });

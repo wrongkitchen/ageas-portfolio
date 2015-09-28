@@ -5,7 +5,7 @@ Meteor.methods({
 		return true;
 	},
 	register: function(doc){
-		check(doc, Schemas.User);
+		var result = check(doc, Schemas.User);
 		return Accounts.createUser(doc);
 	},
 	cropImage: function(imageID, cp){
@@ -19,10 +19,25 @@ Meteor.methods({
 	saveTemplateDatas: function(pObj){
 		var savedModel = TemplateData.findOne({ user: Meteor.userId() });
 		if(savedModel){
-			return TemplateData.update({ user: Meteor.userId() }, pObj);
+			return TemplateData.update({ user: Meteor.userId() }, { $set: pObj });
 		} else {
 			pObj.user = Meteor.userId();
 			return TemplateData.insert(pObj);
 		}
+	},
+	saveImage: function(imgSrc, dbKey){
+		var imgID = Images.insert(imgSrc);
+		var pObj = {};
+			pObj[dbKey] = imgID._id;
+		if(imgID){
+			var savedModel = TemplateData.findOne({ user: Meteor.userId() });
+			if(savedModel){
+				return TemplateData.upsert({ user: Meteor.userId() }, { $set: pObj });
+			} else {
+				pObj.user = Meteor.userId();
+				return TemplateData.insert(pObj);
+			}
+		}
 	}
+
 });

@@ -18,10 +18,12 @@ AutoForm.addHooks('register-form', {
 				return result;
 			} else {
 				Meteor.call('pairEmailPhoneNumber', function(err, result){
-					if(!err){
-						if(result)
-							_this.result(doc);
+					if(err){
+						Bert.alert(err.reason, 'danger', 'growl-top-right');
+						return false;
 					}
+					if(result)
+						_this.result(doc);
 				});
 			}
 		}
