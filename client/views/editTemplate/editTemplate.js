@@ -1,6 +1,5 @@
 
 Session.set('unsave', false);
-
 Tracker.autorun(function(){
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     _.each(TemplateDefauleText, function(data, index){
@@ -17,9 +16,19 @@ Template.editTemplate.helpers({
     }
 });
 Template.editTemplate.events({
+    'click .shareFacebook': function(event){
+        href = $(event.currentTarget).data('href');
+        FB.ui({
+            method: 'share',
+            href: 'http://103.253.146.233/preview-template/' + Meteor.userId() + '#' + href,
+        }, function(response){
+
+        });
+    },
     'click #coverDownloadCaller': function(){
         var userData = TemplateData.findOne({ user: Meteor.userId() });
         var coverImage = Images.findOne(userData.coverTemplateBg);
+        var coverImageUrl = (coverImage) ? coverImage.url() : '/images/demo/cover-image-1.jpg';
         var img = new Image();
             img.onload = function() {
                 // console.log(this.width);
@@ -32,7 +41,7 @@ Template.editTemplate.events({
                     height: 975
                 })
                 .drawImage({
-                    source: coverImage.url(),
+                    source: coverImageUrl,
                     x: (1920 / 2), y: (975 / 2)
                 })
                 .drawImage({
@@ -46,7 +55,7 @@ Template.editTemplate.events({
                     x: 491, y: 41,
                     fontSize: '10.5pt',
                     fontFamily: 'Times New Roman, Times, serif',
-                    text: userData.coverKeywords.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverKeywords || TemplateDefauleText.coverKeywords).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 })
                 .drawText({
@@ -57,7 +66,7 @@ Template.editTemplate.events({
                     align: 'left',
                     fontSize: '90px',
                     fontFamily: 'Times New Roman, Times, serif',
-                    text: userData.coverTitle.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverTitle || TemplateDefauleText.coverTitle).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 })
                 .drawText({
@@ -68,7 +77,7 @@ Template.editTemplate.events({
                     align: 'left',
                     fontSize: '50px',
                     fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
-                    text: userData.coverSubTitle1.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverSubTitle1 || TemplateDefauleText.coverSubTitle1).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 })
                 .drawText({
@@ -79,7 +88,7 @@ Template.editTemplate.events({
                     align: 'left',
                     fontSize: '30px',
                     fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
-                    text: userData.coverSubTitle2.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverSubTitle2 || TemplateDefauleText.coverSubTitle2).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 })
                 .drawText({
@@ -90,7 +99,7 @@ Template.editTemplate.events({
                     align: 'left',
                     fontSize: '35px',
                     fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
-                    text: userData.coverSubTitle3.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverSubTitle3 || TemplateDefauleText.coverSubTitle3).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 })
                 .drawText({
@@ -101,7 +110,7 @@ Template.editTemplate.events({
                     align: 'left',
                     fontSize: '14px',
                     fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
-                    text: userData.coverFooterText.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverFooterText || TemplateDefauleText.coverFooterText).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 })
                 .drawText({
@@ -111,7 +120,7 @@ Template.editTemplate.events({
                     maxWidth: 258,
                     fontSize: '36px',
                     fontFamily: 'Source Sans Pro, MHei, Helvetica, Arial, sans-serif',
-                    text: userData.coverCircle.replace(/<\/?[^>]+(>|$)/g, ""),
+                    text: (userData.coverCircle || TemplateDefauleText.coverCircle).replace(/<\/?[^>]+(>|$)/g, ""),
                     fromCenter: false
                 });
                 function OpenInNewTab(url) {
@@ -121,7 +130,7 @@ Template.editTemplate.events({
                 var imgData = $('#downloadCoverCanvas').getCanvasImage('jpeg');
                 OpenInNewTab(imgData);
             }
-            img.src = coverImage.url();
+            img.src = coverImageUrl;
     },
     'click .tabButton': function(event){
         var href = $(event.currentTarget).attr('href');

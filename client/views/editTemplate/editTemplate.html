@@ -53,7 +53,7 @@
 						</div>
 						<div class="pull-right">
 							<div class="pull-right">
-								<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+								<span class="shareText">你可分享至：</span><span data-href="cover" class="shareFacebook"></span>
 							</div>
 						</div>
 					</div>
@@ -67,7 +67,7 @@
 							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
 						</div>
 						<div class="pull-right">
-							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+							<span class="shareText">你可分享至：</span><span data-href="profile" class="shareFacebook"></span>
 						</div>
 					</div>
 				</div>
@@ -80,12 +80,13 @@
 							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
 						</div>
 						<div class="pull-right">
-							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+							<span class="shareText">你可分享至：</span><span data-href="speaker" class="shareFacebook"></span>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="reference">
+				{{> referenceTemplate }}
 			</div>
 			<div role="tabpanel" class="editableTemplate tab-pane" id="accomplishments">
 				{{> accomplishmentsTemplate }}
@@ -95,7 +96,7 @@
 							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
 						</div>
 						<div class="pull-right">
-							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+							<span class="shareText">你可分享至：</span><span data-href="accomplishments" class="shareFacebook"></span>
 						</div>
 					</div>
 				</div>
@@ -108,7 +109,7 @@
 							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
 						</div>
 						<div class="pull-right">
-							<span class="shareText">你可分享至：</span><span class="shareFacebook"></span>
+							<span class="shareText">你可分享至：</span><span data-href="speech" class="shareFacebook"></span>
 						</div>
 					</div>
 				</div>

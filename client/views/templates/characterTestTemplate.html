@@ -1,0 +1,31 @@
+<template name="characterTestTemplate">
+	<div class="modal fade" id="characterTestPopup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					{{#unless isQuestionEnd }}
+						<h3 class="modal-title">九型人格問卷調查</h3>
+					{{/unless}}
+				</div>
+				<div class="modal-body">
+					{{# if isQuestionEnd }}
+						<div class="questionEndWrap">
+							<h4 class="text-center">問卷完成！</h4>
+							<div class="text-center">你的類型是</div>
+							<div class="text-center"><strong>-{{ getCharType }}-</strong></div>
+						</div>
+					{{ else }}
+						<span class="currentQuestion">Q {{ currentQuestionNumber }}</span>/
+						<span class="totalQuestion">{{ totalQuestionNumber }}</span>
+						<div class="questionText">{{ currentQuestion }}</div>
+						<div class="buttons">
+							<button id="characterYes" class="btn btn-primary">是</button>
+							<button id="characterNo" class="btn btn-primary">否</button>
+						</div>
+					{{/if }}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

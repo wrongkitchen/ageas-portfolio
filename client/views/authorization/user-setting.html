@@ -5,28 +5,29 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">User setting</h4>
+					<h4 class="modal-title">設定</h4>
 				</div>
 				<div class="modal-body">
-					<button type="button" data-dismiss="modal" class="btn btn-primary" id="logoutBtn">Logout</button>
-					<hr>
-					Change password
-					<hr>
+					
+					<h5>Change password</h5>
 					
 					<form id="change-password">
 						<div class="form-group">
-							<label for="currentPassword">Current Password</label>
-							<input type="password" id="currentPassword" class="form-control">
+							<input type="password" placeholder="Current Password" id="currentPassword" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="currentPassword">New Password</label>
-							<input type="password" id="newPassword" class="form-control">
+							<input type="password" placeholder="New Password" id="newPassword" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="currentPassword">Re-enter Password</label>
-							<input type="password" id="reEnterPassword" class="form-control">
+							<input type="password" placeholder="Re-enter Password" id="reEnterPassword" class="form-control">
 						</div>
-						<div class="form-group"><button class="btn btn-primary" type="submit">Submit</button></div>
+						<div class="form-group text-center"><button class="btn btn-primary" type="submit">Submit</button></div>
+
+						<hr>
+						
+						<div class="text-center">
+							<button type="button" data-dismiss="modal" class="btn btn-primary" id="logoutBtn">Logout</button>
+						</div>
 					</form>
 
 				</div>

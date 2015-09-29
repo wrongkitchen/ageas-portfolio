@@ -16,6 +16,21 @@ Meteor.methods({
 		gm(readStream).crop(cp.w, cp.h, cp.x, cp.y).stream().pipe(writeStream);
 		return imageID;
 	},
+	saveCharacter: function(pType){
+		var savedModel = TemplateData.findOne({ user: Meteor.userId() });
+		if(pType >=0 && pType <= 8){
+			if(savedModel){
+				return TemplateData.update({ user: Meteor.userId() }, { $set: { characterType: pType } });
+			} else {
+				var obj = {};
+					obj.user = Meteor.userId();
+					obj.characterType = pType;
+				return TemplateData.insert(obj);
+			}
+		} else {
+			return false;
+		}
+	},
 	saveTemplateDatas: function(pObj){
 		var savedModel = TemplateData.findOne({ user: Meteor.userId() });
 		if(savedModel){

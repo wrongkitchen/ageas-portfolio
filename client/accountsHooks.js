@@ -4,7 +4,7 @@ Accounts.onResetPasswordLink(function(_token, _done){
 Accounts.onEmailVerificationLink(function(token, done){
 	Accounts.verifyEmail(token, function(err){
 		if(!err){
-			Bert('Email verified', 'success', 'growl-top-right')
+			Bert.alert('Email verified', 'success', 'growl-top-right')
 			done();
 		}
 	});
@@ -29,7 +29,7 @@ AutoForm.addHooks('register-form', {
 		}
 	},
 	onSuccess: function(method, result) {
-		Bert('Please check email and verify your email address', 'success', 'growl-top-right')
+		Bert.alert('Please check email and verify your email address', 'success', 'growl-top-right')
 		Router.go('/');
 	}
 });

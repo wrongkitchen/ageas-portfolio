@@ -5,7 +5,10 @@ Template.userSetting.events({
 	},
 	'click #logoutBtn': function(){
 		Meteor.logout(function(err){
-			if(err) console.log(err);
+			if(err) 
+				Bert.alert(err.reason, 'danger', 'growl-top-right');
+			else 
+				Router.go('/');
 		});
 	},
 	'submit #change-password': function(e){

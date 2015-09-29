@@ -1,4 +1,5 @@
 <template name="profileTemplate">
+	{{> characterTestTemplate }}
 	<div class="profileTemplate">
 		<div class="container container-fixed">
 			<div class="profileNameDescription">
@@ -21,18 +22,20 @@
 						</div>
 					</div>
 					<div class="col-sm-5">
-						<div class="personality">
-							<div class="editComponent findType"></div>
+						<!-- <div class="personality">
 							<div class="typeText">
 								<div class="upper">Type 2</div>
 								<div class="lower">THE HELPER</div>
 							</div>
 							<div class="editComponent uploadBtn"></div>
 							<img src="/images/demo/profile-image-1.jpg" width="100%" alt="">
-						</div>
+						</div> -->
 						<div class="block purpleBlock">
 							<div class="name purpleName">Type Characteristics</div>
-							<div data-modal-key="profilePurpleContent" class="editable content purpleContent"></div>
+							{{#if getCharacteristics }}
+								<div class="content purpleContent">{{{ getCharacteristics }}}</div>
+							{{/if }}
+							<a class="editComponent findType"></a>
 						</div>
 					</div>
 				</div>
