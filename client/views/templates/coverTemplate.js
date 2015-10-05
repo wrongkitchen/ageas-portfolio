@@ -2,6 +2,10 @@ Template.coverTemplate.helpers({
 	coverTemplateBg: function(){
 		var userId = (this.previewUserId) ? this.previewUserId : Meteor.userId();
 		var userData = TemplateData.findOne({ user: userId });
+        Session.set('coverImageDownloadable', false);
+		DrawCoverCanvas(function(){
+	        Session.set('coverImageDownloadable', true);
+	    });
 		if(userData && userData.coverTemplateBg){
 			var bgImage = Images.findOne(userData.coverTemplateBg);
 			if(bgImage) 

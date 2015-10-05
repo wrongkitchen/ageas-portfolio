@@ -49,7 +49,9 @@
 					<div class="container container-fixed">
 						<div class="pull-left">
 							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
-							<button id="coverDownloadCaller" class="btn btn-primary">下載</button>
+							{{#if coverImageDownloadable }}
+								<button id="coverDownloadCaller" class="btn btn-primary">下載</button>
+							{{/if}}
 						</div>
 						<div class="pull-right">
 							<div class="pull-right">
