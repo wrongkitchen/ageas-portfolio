@@ -24,3 +24,5 @@ mrt:facebook-sdk
 aldeed:template-extension
 underscore
 yogiben:admin
+riaan53:blueimp-canvas-to-blob
+cfs:filesaver
