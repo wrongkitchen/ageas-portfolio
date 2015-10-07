@@ -1,3 +1,12 @@
+function hexToRgb(hex) {
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+
+    return r + "," + g + "," + b;
+}
+
 Template.accomplishmentsTemplate.helpers({
 	accomplishImage: function(pModelKey, pDefaultImage){
 		var userId = (this.previewUserId) ? this.previewUserId : Meteor.userId();
@@ -43,23 +52,31 @@ Template.accomplishmentsTemplate.helpers({
 							var filterImage = new Image();
 								filterImage.onload = function(){
 									setTimeout(function(){
-										$('#' + pImageID).attr('src', canvas[0].toDataURL("image/jpeg"));
+										$('#' + pImageID).attr('src', canvas[0].toDataURL());
 									}, 1000);
 								}
 								filterImage.src = (pColor === 'bubble') ? '/images/filter-01.png' : '/images/filter-02.png';
 						} else {
-							Caman("#" + canvasID, function () {
-								if(pColor){
-									this.newLayer(function () {
-										this.opacity(50);
-										this.fillColor(pColor);
-									});
-								}
-								this.render(function () {
-									$('#' + pImageID).attr('src', canvas[0].toDataURL("image/jpeg"));
-									canvas.remove();
-								});
+							$('#' + canvasID).drawRect({
+								fillStyle: 'rgba(' + hexToRgb(pColor) + ',.5)',
+								x: 0, y: 0,
+								width: image.width,
+								height: image.height,
+								fromCenter: false
 							});
+							$('#' + pImageID).attr('src', canvas[0].toDataURL());
+							// Caman("#" + canvasID, function () {
+							// 	if(pColor){
+							// 		this.newLayer(function () {
+							// 			this.opacity(50);
+							// 			this.fillColor(pColor);
+							// 		});
+							// 	}
+							// 	this.render(function () {
+							// 		$('#' + pImageID).attr('src', canvas[0].toDataURL());
+							// 		canvas.remove();
+							// 	});
+							// });
 						}
 					}
 					image.src = pDataSrc;
@@ -86,16 +103,20 @@ Template.accomplishmentsTemplate.events({
 		$(event.currentTarget).addClass('active');
 	},
 	'click #filterConfirm': function(event){
-		var src = $('.accomp_filter_image.active').attr('src');
-		Meteor.call('saveImage', src, Session.get('accomplishImageKey'), function(err, result){
-			if (err){
-				Bert.alert(err.reason, 'danger');
-			} else {
-				$(Session.get('isPhotoUploadPopup') + ' .photoUpPreview').modal('hide');
-				$('.accomp_filter_image').removeClass('active');
-				Bert.alert('Image saved', 'success');
-			}
-		});
+		if($('.accomp_filter_image.active').length){
+			var src = $('.accomp_filter_image.active').attr('src');
+			Meteor.call('saveImage', src, Session.get('accomplishImageKey'), function(err, result){
+				if (err){
+					Bert.alert(err.reason, 'danger');
+				} else {
+					$(Session.get('isPhotoUploadPopup') + ' .photoUpPreview').modal('hide');
+					$('.accomp_filter_image').removeClass('active');
+					Bert.alert('Image saved', 'success');
+				}
+			});
+		} else {
+			Bert.alert('Please select an image', 'danger');
+		}
 	},
 	'click .uploadBtn': function(event){
 		imageKey = $(event.currentTarget).data('image-key');
