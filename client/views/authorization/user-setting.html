@@ -9,9 +9,18 @@
 				</div>
 				<div class="modal-body">
 					
-					<h5>Change password</h5>
+					<form id="userProfileUpdate">
+						<h5>姓名</h5>
+						<div class="form-group">
+							<input type="text" placeholder="Name" id="currentName" class="form-control" value={{ getUserCurrentName }}>
+						</div>
+						<div class="form-group text-left"><button class="btn btn-primary" type="submit">Submit</button></div>
+					</form>
 					
-					<form id="change-password">
+					<hr>
+
+					<form id="changePassword">
+						<h5>更改密碼</h5>
 						<div class="form-group">
 							<input type="password" placeholder="Current Password" id="currentPassword" class="form-control">
 						</div>
@@ -21,7 +30,7 @@
 						<div class="form-group">
 							<input type="password" placeholder="Re-enter Password" id="reEnterPassword" class="form-control">
 						</div>
-						<div class="form-group text-center"><button class="btn btn-primary" type="submit">Submit</button></div>
+						<div class="form-group text-left"><button class="btn btn-primary" type="submit">Submit</button></div>
 
 						<hr>
 						

@@ -61,6 +61,12 @@ Meteor.methods({
 				return TemplateData.insert(pObj);
 			}
 		}
+	},
+	updateUserProfile: function(pObj){
+		if(pObj){
+			return Meteor.users.update({ _id:Meteor.userId() }, { $set : { "profile.name": pObj.name } });
+		} else {
+			return false;
+		}
 	}
-
 });

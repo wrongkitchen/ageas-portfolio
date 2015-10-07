@@ -28,7 +28,7 @@ Template.accomplishmentsTemplate.helpers({
 				var image = new Image();
 					image.onload = function(){
 						var canvasID = 'canvas_' + Math.floor(Math.random() * 100000);
-						var canvas = $('<canvas id="' + canvasID + '" width="' + image.width +'" height="' + image.height + '"></canvas>');
+						var canvas = $('<canvas style="display:none;" id="' + canvasID + '" width="' + image.width +'" height="' + image.height + '"></canvas>');
 						var ctx = canvas[0].getContext('2d');
 						ctx.drawImage(image, 0, 0);
 						$('body').append(canvas);

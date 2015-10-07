@@ -1,6 +1,6 @@
 Template.userSetting.events({
 	'click #userSettingPopup button.close': function(){
-		$('#change-password')[0].reset()
+		$('#changePassword')[0].reset()
 		$('#userSettingPopup .form-group').removeClass('has-error');
 	},
 	'click #logoutBtn': function(){
@@ -11,7 +11,25 @@ Template.userSetting.events({
 				Router.go('/');
 		});
 	},
-	'submit #change-password': function(e){
+	'submit #userProfileUpdate': function(e){
+		
+		e.preventDefault();
+
+		var current = $('#currentName').val();
+		
+		if(current === '') $('#currentName').parent().addClass('has-error');
+		
+		if(!current) return false;
+		
+		Meteor.call('updateUserProfile', { name: current }, function(err){ 
+			if(err){
+				Bert.alert(err.reason, 'danger');
+			} else {
+				Bert.alert('User profile updated', 'success');
+			}
+		});
+	},
+	'submit #changePassword': function(e){
 		
 		e.preventDefault();
 
@@ -36,7 +54,7 @@ Template.userSetting.events({
 					if(err){
 						Bert.alert(err.reason, 'danger');
 					} else {
-						$('#change-password')[0].reset()
+						$('#changePassword')[0].reset()
 						Bert.alert('Password changed', 'success');
 					}
 				});
@@ -44,5 +62,12 @@ Template.userSetting.events({
 		});
 		
 		return false;
+	}
+});
+
+Template.userSetting.helpers({
+	getUserCurrentName: function(){
+		var user = Meteor.user();
+		return (user && user.profile && user.profile.name) ? user.profile.name : '';
 	}
 });
