@@ -57,13 +57,15 @@ Template.accomplishmentsTemplate.helpers({
 								}
 								filterImage.src = (pColor === 'bubble') ? '/images/filter-01.png' : '/images/filter-02.png';
 						} else {
-							$('#' + canvasID).drawRect({
-								fillStyle: 'rgba(' + hexToRgb(pColor) + ',.5)',
-								x: 0, y: 0,
-								width: image.width,
-								height: image.height,
-								fromCenter: false
-							});
+							if(pColor){
+								$('#' + canvasID).drawRect({
+									fillStyle: 'rgba(' + hexToRgb(pColor) + ',.5)',
+									x: 0, y: 0,
+									width: image.width,
+									height: image.height,
+									fromCenter: false
+								});
+							}
 							$('#' + pImageID).attr('src', canvas[0].toDataURL());
 							// Caman("#" + canvasID, function () {
 							// 	if(pColor){
