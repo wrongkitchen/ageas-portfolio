@@ -21,12 +21,12 @@ Template.imageUploader.events({
 		var cropArea = imageEditor.tellSelect();
 		Meteor.call('cropImage', imageID, cropArea, function(err, result){
 			if(err) {
-				Bert.alert(err.reason, 'danger', 'growl-top-right');
+				Bert.alert(err.reason, 'danger');
 			} else if(!result){
-				Bert.alert('Please select an area', 'danger', 'growl-top-right');
+				Bert.alert('Please select an area', 'danger');
 			} else {
 				Session.set('previewImageSrc', '');
-				Bert.alert('Image cropped', 'success', 'growl-top-right');
+				Bert.alert('Image cropped', 'success');
 			}
 			$('#fileUploadForm')[0].reset();
 		});
@@ -36,7 +36,7 @@ Template.imageUploader.events({
 		FS.Utility.eachFile(event, function(file) {
 			Images.insert(file, function (err, fileObj) {
 				if (err){
-					Bert.alert(err.reason, 'danger', 'growl-top-right');
+					Bert.alert(err.reason, 'danger');
 				} else {
 					Session.set('previewImageSrc', fileObj._id);
 				}

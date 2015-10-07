@@ -62,10 +62,10 @@ Template.editTemplate.events({
                     Session.set('coverImageDownloadable', false);
                     DrawCoverCanvas(function(){
                         Session.set('unsave', false);
-                        Bert.alert('儲存成功', 'success', 'growl-top-right');
+                        Bert.alert('儲存成功', 'success');
                     });
                 } else {
-                    Bert.alert(err.reason, 'danger', 'growl-top-right');
+                    Bert.alert(err.reason, 'danger');
                 }
             });
         } else {

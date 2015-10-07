@@ -51,7 +51,7 @@ Template.accomplishmentsTemplate.helpers({
 							Caman("#" + canvasID, function () {
 								if(pColor){
 									this.newLayer(function () {
-										this.opacity(30);
+										this.opacity(50);
 										this.fillColor(pColor);
 									});
 								}
@@ -67,11 +67,11 @@ Template.accomplishmentsTemplate.helpers({
 			},
 			callback: function(err, photo){
 				if(err) {
-					Bert.alert(err.reason, 'danger', 'growl-top-right');
+					Bert.alert(err.reason, 'danger');
 				} else {
 					if(!photo.newImage){
 					} else {
-						Bert.alert('Please select an area', 'success', 'growl-top-right');
+						Bert.alert('Please select an area', 'success');
 					}
 				}
 			}
@@ -89,11 +89,11 @@ Template.accomplishmentsTemplate.events({
 		var src = $('.accomp_filter_image.active').attr('src');
 		Meteor.call('saveImage', src, Session.get('accomplishImageKey'), function(err, result){
 			if (err){
-				Bert.alert(err.reason, 'danger', 'growl-top-right');
+				Bert.alert(err.reason, 'danger');
 			} else {
 				$(Session.get('isPhotoUploadPopup') + ' .photoUpPreview').modal('hide');
 				$('.accomp_filter_image').removeClass('active');
-				Bert.alert('Image saved', 'success', 'growl-top-right');
+				Bert.alert('Image saved', 'success');
 			}
 		});
 	},

@@ -61,9 +61,9 @@ Template.characterTestTemplate.onRendered(function(){
 		if(Session.get('userAnswer').length === PersonalTest.questions.length){
 			Meteor.call('saveCharacter', mode(answers), function(err, result){
 				if(err)
-					Bert.alert(err.reason, 'danger', 'growl-top-right');
+					Bert.alert(err.reason, 'danger');
 				else
-					Bert.alert('Characteristics saved', 'success', 'growl-top-right');
+					Bert.alert('Characteristics saved', 'success');
 			});
 		}
 		userAnswer = [];

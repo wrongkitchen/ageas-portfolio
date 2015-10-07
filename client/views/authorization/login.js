@@ -5,7 +5,7 @@ Template.login.events({
 			password = $('#login-password').val();
 		Meteor.loginWithPassword(email, password, function(err){
 			if(err){
-				Bert.alert(err.reason, 'danger', 'growl-top-right');
+				Bert.alert(err.reason, 'danger');
 			}
 		});
 		return false;

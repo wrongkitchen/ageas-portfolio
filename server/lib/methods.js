@@ -8,6 +8,14 @@ Meteor.methods({
 		var result = check(doc, Schemas.User);
 		return Accounts.createUser(doc);
 	},
+	resetCoverImage: function(){
+		var savedModel = TemplateData.findOne({ user: Meteor.userId() });
+		if(savedModel){
+			return TemplateData.update({ user: Meteor.userId() }, { $set: { coverTemplateBg : '' } });
+		} else {
+			return false;
+		}
+	},
 	cropImage: function(imageID, cp){
 		var image = Images.findOne(imageID);
 		var readStream = image.createReadStream('images');

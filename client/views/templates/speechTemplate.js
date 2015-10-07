@@ -25,19 +25,19 @@ Template.speechTemplate.helpers({
 			showClear: false,
 			callback: function(err, photo){
 				if(err) {
-					Bert.alert(err.reason, 'danger', 'growl-top-right');
+					Bert.alert(err.reason, 'danger');
 				} else {
 					if(!photo.newImage){
 						Meteor.call('saveImage', photo.src, 'speechPhoto', function(err, result){
 							if (err){
-								Bert.alert(err.reason, 'danger', 'growl-top-right');
+								Bert.alert(err.reason, 'danger');
 							} else {
 								$('.speechTemplate .photoUpPreview').modal('hide');
-								Bert.alert('Image saved', 'success', 'growl-top-right');
+								Bert.alert('Image saved', 'success');
 							}
 						});
 					} else {
-						Bert.alert('Please select an area', 'success', 'growl-top-right');
+						Bert.alert('Please select an area', 'success');
 					}
 				}
 			}

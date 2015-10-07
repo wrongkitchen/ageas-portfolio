@@ -5,15 +5,15 @@ Template.forgetPassword.events({
 			phone = $('#forget-phone').val();
 		Meteor.call('pairEmailPhoneNumber', function(err, result){
 			if(err) {
-				Bert.alert(err.reason, 'danger', 'growl-top-right');
+				Bert.alert(err.reason, 'danger');
 			} else {
 				if(result){
 					Accounts.forgotPassword({ email: email }, function(err){
 						if(err){
-							Bert.alert(err.reason, 'danger', 'growl-top-right');
+							Bert.alert(err.reason, 'danger');
 						} else {
 							$('#forget-password')[0].reset();
-							Bert.alert('Please check email & reset password', 'success', 'growl-top-right');
+							Bert.alert('Please check email & reset password', 'success');
 							Router.go('/');
 						}
 					});

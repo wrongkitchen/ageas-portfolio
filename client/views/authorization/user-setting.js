@@ -6,7 +6,7 @@ Template.userSetting.events({
 	'click #logoutBtn': function(){
 		Meteor.logout(function(err){
 			if(err) 
-				Bert.alert(err.reason, 'danger', 'growl-top-right');
+				Bert.alert(err.reason, 'danger');
 			else 
 				Router.go('/');
 		});
@@ -26,18 +26,18 @@ Template.userSetting.events({
 
 		Meteor.loginWithPassword(Meteor.user().emails[0].address, current, function(err){ 
 			if(err){
-				Bert.alert(err.reason, 'danger', 'growl-top-right');
+				Bert.alert(err.reason, 'danger');
 			} else if(newPassword != rePassword){
-				Bert.alert('Password not match', 'danger', 'growl-top-right');
+				Bert.alert('Password not match', 'danger');
 			} else if(current == newPassword){
-				Bert.alert('Current password & new password cannot be the same', 'danger', 'growl-top-right');
+				Bert.alert('Current password & new password cannot be the same', 'danger');
 			} else {
 				Accounts.changePassword(current, rePassword, function(err){
 					if(err){
-						Bert.alert(err.reason, 'danger', 'growl-top-right');
+						Bert.alert(err.reason, 'danger');
 					} else {
 						$('#change-password')[0].reset()
-						Bert.alert('Password changed', 'success', 'growl-top-right');
+						Bert.alert('Password changed', 'success');
 					}
 				});
 			}

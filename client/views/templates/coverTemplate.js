@@ -1,3 +1,14 @@
+Template.coverTemplate.events({
+	"click .resetBtn": function(){
+		Meteor.call('resetCoverImage', function(err, result){
+			if (err){
+				Bert.alert(err.reason, 'danger');
+			} else {
+				Bert.alert('Image reset', 'success');
+			}
+		});
+	}
+});
 Template.coverTemplate.helpers({
 	coverTemplateBg: function(){
 		var userId = (this.previewUserId) ? this.previewUserId : Meteor.userId();
@@ -29,20 +40,20 @@ Template.coverTemplate.helpers({
 			showClear: false,
 			callback: function(err, photo){
 				if(err) {
-					Bert.alert(err.reason, 'danger', 'growl-top-right');
+					Bert.alert(err.reason, 'danger');
 				} else {
 					// if(!photo.newImage){
 						Meteor.call('saveImage', photo.src, 'coverTemplateBg', function(err, result){
 							if (err){
-								Bert.alert(err.reason, 'danger', 'growl-top-right');
+								Bert.alert(err.reason, 'danger');
 							} else {
 								// $('#photoUpPreview').modal('hide');
 								PhotoUp.set(null)
-								Bert.alert('Image saved', 'success', 'growl-top-right');
+								Bert.alert('Image saved', 'success');
 							}
 						});
 					// } else {
-						// Bert.alert('Please select an area', 'success', 'growl-top-right');
+						// Bert.alert('Please select an area', 'success');
 					// }
 				}
 			}
