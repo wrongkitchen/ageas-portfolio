@@ -107,13 +107,17 @@ Template.accomplishmentsTemplate.events({
 	'click #filterConfirm': function(event){
 		if($('.accomp_filter_image.active').length){
 			var src = $('.accomp_filter_image.active').attr('src');
+
+			Bert.alert('儲存中...', 'success');
+
 			Meteor.call('saveImage', src, Session.get('accomplishImageKey'), function(err, result){
 				if (err){
 					Bert.alert(err.reason, 'danger');
 				} else {
-					$(Session.get('isPhotoUploadPopup') + ' .photoUpPreview').modal('hide');
+					// $(Session.get('isPhotoUploadPopup') + ' .photoUpPreview').modal('hide');
+					$('.photoUpPreview').modal('hide');
 					$('.accomp_filter_image').removeClass('active');
-					Bert.alert('Image saved', 'success');
+					Bert.alert('圖片己儲存', 'success');
 				}
 			});
 		} else {

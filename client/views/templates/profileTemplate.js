@@ -35,13 +35,15 @@ Template.profileTemplate.helpers({
 					Bert.alert(err.reason, 'danger');
 				} else {
 					// if(!photo.newImage){
+						Bert.alert('儲存中...', 'success');
+
 						Meteor.call('saveImage', photo.src, 'aboutUserThumbnail', function(err, result){
 							if (err){
 								Bert.alert(err.reason, 'danger');
 							} else {
 								// $('#photoUpPreview').modal('hide');
 								PhotoUp.set(null)
-								Bert.alert('Image saved', 'success');
+								Bert.alert('圖片己儲存', 'success');
 							}
 						});
 					// } else {

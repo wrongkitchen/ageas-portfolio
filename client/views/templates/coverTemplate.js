@@ -4,7 +4,7 @@ Template.coverTemplate.events({
 			if (err){
 				Bert.alert(err.reason, 'danger');
 			} else {
-				Bert.alert('Image reset', 'success');
+				Bert.alert('圖片己重置', 'success');
 			}
 		});
 	}
@@ -43,13 +43,14 @@ Template.coverTemplate.helpers({
 					Bert.alert(err.reason, 'danger');
 				} else {
 					// if(!photo.newImage){
+						Bert.alert('儲存中...', 'success');
 						Meteor.call('saveImage', photo.src, 'coverTemplateBg', function(err, result){
 							if (err){
 								Bert.alert(err.reason, 'danger');
 							} else {
 								// $('#photoUpPreview').modal('hide');
 								PhotoUp.set(null)
-								Bert.alert('Image saved', 'success');
+								Bert.alert('圖片己儲存', 'success');
 							}
 						});
 					// } else {

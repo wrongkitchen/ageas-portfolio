@@ -28,14 +28,18 @@ Template.speechTemplate.helpers({
 					Bert.alert(err.reason, 'danger');
 				} else {
 					if(!photo.newImage){
+						
+						Bert.alert('儲存中...', 'success');
+						
 						Meteor.call('saveImage', photo.src, 'speechPhoto', function(err, result){
 							if (err){
 								Bert.alert(err.reason, 'danger');
 							} else {
 								$('.speechTemplate .photoUpPreview').modal('hide');
-								Bert.alert('Image saved', 'success');
+								Bert.alert('圖片己儲存', 'success');
 							}
 						});
+						
 					} else {
 						Bert.alert('Please select an area', 'success');
 					}

@@ -10,7 +10,17 @@ Template.photoUpOverride.replaces("photoUp");
 
 Template.photoUpImagePreviewOverride.replaces("photoUpImagePreview");
 
+var isIE = function(){
+	var myNav = navigator.userAgent.toLowerCase();
+	return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+}
+
+SupportedBrowser = function(){
+	return (isIE () && isIE () <= 9) ? false : true;
+}
+
 DrawCoverCanvas = function(pCallback){
+	if(SupportedBrowser()){
 		var userData = TemplateData.findOne({ user: Meteor.userId() });
 		var coverImage = (userData && userData.coverTemplateBg && userData.coverTemplateBg) ? Images.findOne(userData.coverTemplateBg) : null;
 		var coverImageUrl = (coverImage) ? coverImage.url() : '/images/demo/cover-image-1.jpg';
@@ -116,4 +126,5 @@ DrawCoverCanvas = function(pCallback){
 					if(pCallback) pCallback();
 			}
 			img.src = coverImageUrl;
+	}
 }
