@@ -5,7 +5,7 @@
 			border:1px dashed #999; outline: none; 
 			p{ margin:0; padding:0; }
 		}
-		.editable.error{ border:1px dashed red; overflow-y:scroll; }
+		.editable.error{ border:1px solid red; overflow-y:scroll; }
 		.editComponent{ display:block; }
 	}
 	h3.text-center{ font-size:24px; }
@@ -18,9 +18,12 @@
 	.shareText{ position:relative; top: -6px; }
 	.shareFacebook{ 
 		width:27px; height:26px; display:inline-block; position:relative; 
-		background-image: url(/images/edit-facebook.png);
+		background-image: url(/images/edit-facebook.png); cursor:pointer;
 	}
 }
+
+.transparent{ opacity: .4; }
+
 .editComponent{ display:none; }
 
 .coverTemplate{
@@ -138,7 +141,22 @@
 		}
 		.grid{ margin-top:40px; }
 		.greenBlock{
-			background-color: #98b83b; padding:95px 45px 30px 45px; margin-top:60px;
+			background-color: #98b83b; padding:115px 45px 30px 45px; margin-top:60px;
+			position:relative;
+			.userThumbnail, .editComponent.uploadBtn{
+				position: absolute; top: -50px; width: 129px; height: 143px; left: 45px;
+				background-size: cover; background-position: center center; z-index:1;
+			}
+			.editComponent.uploadBtn{
+				background-image: url(/images/about-upload.png); z-index:2;
+				background-color: #fff;
+				&.active{ background-color: rgba(255, 255, 255, .3); }
+				.photo-up .dropbox.no-image{ 
+					width: 129px; height: 143px; 
+					background-color: transparent;
+					.photo-in{ height:100%; }
+				}
+			}
 			.name{ height:45px; }
 			.content{ height:105px; }
 		}

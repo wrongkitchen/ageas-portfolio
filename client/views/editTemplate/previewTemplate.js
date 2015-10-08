@@ -16,10 +16,13 @@ Template.previewTemplate.onRendered(function(){
     });
     var templateData = TemplateData.findOne({ user: previewID });
     _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index])
+        if(templateData && templateData[index]){
             $('.editable[data-modal-key=' + index +']').html(templateData[index]);
-        else 
+            $('.adminEditable[data-modal-key=' + index +']').html(templateData[index]);
+        } else {
             $('.editable[data-modal-key=' + index +']').html(data);
+            $('.adminEditable[data-modal-key=' + index +']').html(data);
+        }
     });
 });
 

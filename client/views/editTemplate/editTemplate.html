@@ -48,9 +48,13 @@
 				<div class="templateControl">
 					<div class="container container-fixed">
 						<div class="pull-left">
-							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
-							{{#if coverImageDownloadable }}
-								<button id="coverDownloadCaller" class="btn btn-primary">下載</button>
+							{{#if isDocumentSaveable }}
+								<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+								{{#if coverImageDownloadable }}
+									<button id="coverDownloadCaller" class="btn btn-primary">下載</button>
+								{{/if}}
+							{{ else }}
+								<p>字數太多，不能儲存</p>
 							{{/if}}
 						</div>
 						<div class="pull-right">
@@ -66,7 +70,11 @@
 				<div class="templateControl">
 					<div class="container container-fixed">
 						<div class="pull-left">
+						{{#if isDocumentSaveable }}
 							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+						{{ else }}
+							<p>字數太多，不能儲存</p>
+						{{/if}}
 						</div>
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="profile" class="shareFacebook"></span>
@@ -79,7 +87,11 @@
 				<div class="templateControl">
 					<div class="container container-fixed">
 						<div class="pull-left">
-							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{#if isDocumentSaveable }}
+								<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{ else }}
+								<p>字數太多，不能儲存</p>
+							{{/if}}
 						</div>
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="speaker" class="shareFacebook"></span>
@@ -95,7 +107,11 @@
 				<div class="templateControl">
 					<div class="container container-fixed">
 						<div class="pull-left">
-							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{#if isDocumentSaveable }}
+								<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{ else }}
+								<p>字數太多，不能儲存</p>
+							{{/if}}
 						</div>
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="accomplishments" class="shareFacebook"></span>
@@ -108,7 +124,11 @@
 				<div class="templateControl">
 					<div class="container container-fixed">
 						<div class="pull-left">
-							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{#if isDocumentSaveable }}
+								<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{ else }}
+								<p>字數太多，不能儲存</p>
+							{{/if}}
 						</div>
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="speech" class="shareFacebook"></span>

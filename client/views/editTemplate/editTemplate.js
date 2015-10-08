@@ -2,11 +2,10 @@
 Session.set('unsave', false);
 Session.set('coverImageDownloadable', false);
 
-
 Tracker.autorun(function(){
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index])
+        if(templateData && templateData[index] && templateData[index].replace(/<\/?[^>]+(>|$)/g, ""))
             $('.editable[data-modal-key=' + index +']').html(templateData[index]);
         else 
             $('.editable[data-modal-key=' + index +']').html(data);
@@ -14,6 +13,9 @@ Tracker.autorun(function(){
 });
 
 Template.editTemplate.helpers({
+    "isDocumentSaveable": function(){
+        return Session.get('isDocumentSaveable');
+    },
     "saveOrPreview": function(){
         return (Session.get('unsave')) ? "儲存" : "預覽";
     },
@@ -21,15 +23,19 @@ Template.editTemplate.helpers({
         if(!Session.get('coverImageDownloadable'))
             return false;
         else
-            return !Session.set('unsave');
+            return !Session.get('unsave');
     }
 });
 Template.editTemplate.events({
+    'click .editable': function(event){
+        if($(event.currentTarget).children('.transparent').length)
+            $(event.currentTarget).children('.transparent').remove();
+    },
     'click .shareFacebook': function(event){
         href = $(event.currentTarget).data('href');
         FB.ui({
             method: 'share',
-            href: 'http://103.253.146.233/preview-template/' + Meteor.userId() + '#' + href,
+            href: Meteor.settings['public'].ROOT_URL + '/preview-template/' + Meteor.userId() + '#' + href,
         }, function(response){
 
         });
@@ -90,10 +96,13 @@ Template.editTemplate.onRendered(function(){
 
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index])
+        if(templateData && templateData[index] && templateData[index].replace(/<\/?[^>]+(>|$)/g, "")){
             $('.editable[data-modal-key=' + index +']').html(templateData[index]);
-        else
+            $('.adminEditable[data-modal-key=' + index +']').html(templateData[index]);
+        } else {
             $('.editable[data-modal-key=' + index +']').html(data);
+            $('.adminEditable[data-modal-key=' + index +']').html(data);
+        }
     });
 
     medium = new MediumEditor('.editable', {
@@ -110,12 +119,14 @@ Template.editTemplate.onRendered(function(){
     		return false;
     	}
     	if ($target[0].scrollHeight > $target.innerHeight()) {
-			$target.css('border', '1px solid red');
-			$target.css('overflow-y', 'scroll');
-		} else {
-			$target.css('border', '1px dashed black');
-			$target.css('overflow', 'hidden');
-		}
+            $target.addClass('error');
+        } else {
+            $target.removeClass('error');
+        }
+        Session.set('unsave', true);
+        Session.set('isDocumentSaveable', ($('.editable.error').length > 0) ? false : true);
 	});
+
+    Session.set('isDocumentSaveable', ($('.editable.error').length > 0) ? false : true);
     
 });

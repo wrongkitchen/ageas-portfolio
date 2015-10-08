@@ -34,7 +34,12 @@ Template.characterTestTemplate.helpers({
 			answers = _.without(answers, null);
 		// console.log(answers);
 		// console.log(mode(answers));
-		return PersonalTest.types[mode(answers)];
+		if(answers.length <= 0 ){
+			$('#characterTestPopup').modal('hide');
+			return false;
+		} else {
+			return PersonalTest.types[mode(answers)];
+		}
 	}
 });
 
@@ -58,13 +63,15 @@ Template.characterTestTemplate.onRendered(function(){
 	$('#characterTestPopup').on('hidden.bs.modal', function (e) {
 		var answers = Session.get('userAnswer');
 			answers = _.without(answers, null);
-		if(Session.get('userAnswer').length === PersonalTest.questions.length){
-			Meteor.call('saveCharacter', mode(answers), function(err, result){
-				if(err)
-					Bert.alert(err.reason, 'danger');
-				else
-					Bert.alert('Characteristics saved', 'success');
-			});
+		if(answers.length > 0 ){
+			if(Session.get('userAnswer').length === PersonalTest.questions.length){
+				Meteor.call('saveCharacter', mode(answers), function(err, result){
+					if(err)
+						Bert.alert(err.reason, 'danger');
+					else
+						Bert.alert('Characteristics saved', 'success');
+				});
+			}
 		}
 		userAnswer = [];
 		Session.set('userAnswer', userAnswer);

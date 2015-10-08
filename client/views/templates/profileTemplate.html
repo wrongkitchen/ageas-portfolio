@@ -13,6 +13,12 @@
 				<div class="row grid">
 					<div class="col-sm-7">
 						<div class="block greenBlock">
+							{{#if getAboutUserThumbnail }}
+								<div class="userThumbnail" style="background-image: url({{getAboutUserThumbnail}});"></div>
+							{{/if}}
+							<div class="editComponent uploadBtn {{#if getAboutUserThumbnail }}active{{/if}}">
+								{{> photoUp photoUpOptions }}
+							</div>
 							<div data-modal-key="profileGreenName" class="editable name greenName"></div>
 							<div data-modal-key="profileGreenContent" class="editable content greenContent"></div>
 						</div>
