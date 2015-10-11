@@ -1,3 +1,13 @@
+<template name="editTemplateRightReserve">
+	<div class="row">
+		<div class="col-xs-12">
+			<br />
+			<p>所有內容皆屬其學員的個人意見，並不代表富通保險之立場。</p>
+			<p>Such information contributed in e-portfolio reflects only the views of the contributor of such information and does not represent the viewpoint of Ageas Insurance Company (Asia) Limited.</p>
+		</div>
+	</div>
+</template>
+
 <template name="editTemplate">
 	<div class="sections" id="editSection">
 		<div class="thumbnails">
@@ -62,6 +72,7 @@
 								<span class="shareText">你可分享至：</span><span data-href="cover" class="shareFacebook"></span>
 							</div>
 						</div>
+						{{> editTemplateRightReserve }}
 					</div>
 				</div>
 			</div>
@@ -70,15 +81,16 @@
 				<div class="templateControl">
 					<div class="container container-fixed">
 						<div class="pull-left">
-						{{#if isDocumentSaveable }}
-							<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
-						{{ else }}
-							<p>字數太多，不能儲存</p>
-						{{/if}}
+							{{#if isDocumentSaveable }}
+								<button class="btn btn-primary savePreviewBtn">{{ saveOrPreview }}</button>
+							{{ else }}
+								<p>字數太多，不能儲存</p>
+							{{/if}}
 						</div>
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="profile" class="shareFacebook"></span>
 						</div>
+						{{> editTemplateRightReserve }}
 					</div>
 				</div>
 			</div>
@@ -96,6 +108,7 @@
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="speaker" class="shareFacebook"></span>
 						</div>
+						{{> editTemplateRightReserve }}
 					</div>
 				</div>
 			</div>
@@ -116,6 +129,7 @@
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="accomplishments" class="shareFacebook"></span>
 						</div>
+						{{> editTemplateRightReserve }}
 					</div>
 				</div>
 			</div>
@@ -133,6 +147,7 @@
 						<div class="pull-right">
 							<span class="shareText">你可分享至：</span><span data-href="speech" class="shareFacebook"></span>
 						</div>
+						{{> editTemplateRightReserve }}
 					</div>
 				</div>
 			</div>
