@@ -44,6 +44,12 @@ Template.characterTestTemplate.helpers({
 });
 
 Template.characterTestTemplate.events({
+	'click #characterBack': function(){
+		if(Session.get('userAnswer').length > 0){
+			userAnswer.pop();
+			Session.set('userAnswer', userAnswer);
+		}
+	},
 	'click #characterYes': function(){
 		if(Session.get('userAnswer').length < PersonalTest.questions.length){
 			userAnswer.push(PersonalTest.questions[userAnswer.length].type);

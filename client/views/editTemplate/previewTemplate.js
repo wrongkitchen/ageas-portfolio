@@ -14,24 +14,23 @@ Template.previewTemplate.onRendered(function(){
         }
         Session.set('hash', '');
     });
-    var templateData = TemplateData.findOne({ user: previewID });
-    _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index]){
-            $('.editable[data-modal-key=' + index +']').html(templateData[index]);
-            $('.adminEditable[data-modal-key=' + index +']').html(templateData[index]);
-        } else {
-            $('.editable[data-modal-key=' + index +']').html(data);
-            $('.adminEditable[data-modal-key=' + index +']').html(data);
-        }
+    
+    var templateData = TemplateData.findOne({ user: Meteor.userId() });
+    _.each(templateData, function(data, index){
+        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+        else
+            $('.editable[data-modal-key=' + index +']').html('');
     });
 });
 
 Tracker.autorun(function(){
-    var templateData = TemplateData.findOne({ user: previewID });
-    _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index])
-            $('.editable[data-modal-key=' + index +']').html(templateData[index]);
-        else 
-            $('.editable[data-modal-key=' + index +']').html(data);
+    var templateData = TemplateData.findOne({ user: Meteor.userId() });
+    $('.editable').removeClass('notEmpty');
+    _.each(templateData, function(data, index){
+        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+        else
+            $('.editable[data-modal-key=' + index +']').html('');
     });
 });

@@ -4,11 +4,12 @@ Session.set('coverImageDownloadable', false);
 
 Tracker.autorun(function(){
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
-    _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index] && templateData[index].replace(/<\/?[^>]+(>|$)/g, ""))
-            $('.editable[data-modal-key=' + index +']').html(templateData[index]);
-        else 
-            $('.editable[data-modal-key=' + index +']').html(data);
+    $('.editable').removeClass('notEmpty');
+    _.each(templateData, function(data, index){
+        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+        else
+            $('.editable[data-modal-key=' + index +']').html('');
     });
 });
 
@@ -27,9 +28,13 @@ Template.editTemplate.helpers({
     }
 });
 Template.editTemplate.events({
-    'click .editable': function(event){
-        if($(event.currentTarget).children('.transparent').length)
-            $(event.currentTarget).children('.transparent').remove();
+    'keyup .editable': function(event){
+        $target = $(event.currentTarget);
+        var text = $target.html().replace(/<\/?[^>]+(>|$)/g, "");
+        if(text.length > 0)
+            $target.addClass('notEmpty');
+        else 
+            $target.removeClass('notEmpty');
     },
     'click .shareFacebook': function(event){
         href = $(event.currentTarget).data('href');
@@ -95,14 +100,11 @@ Template.editTemplate.onRendered(function(){
     });
 
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
-    _.each(TemplateDefauleText, function(data, index){
-        if(templateData && templateData[index] && templateData[index].replace(/<\/?[^>]+(>|$)/g, "")){
-            $('.editable[data-modal-key=' + index +']').html(templateData[index]);
-            $('.adminEditable[data-modal-key=' + index +']').html(templateData[index]);
-        } else {
-            $('.editable[data-modal-key=' + index +']').html(data);
-            $('.adminEditable[data-modal-key=' + index +']').html(data);
-        }
+    _.each(templateData, function(data, index){
+        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+        else
+            $('.editable[data-modal-key=' + index +']').html('');
     });
 
     medium = new MediumEditor('.editable', {

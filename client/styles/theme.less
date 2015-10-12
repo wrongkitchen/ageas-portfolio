@@ -131,25 +131,65 @@ a{ color:#ff6633; font-size:14px; text-decoration: underline; }
 	.editThumbnail{ 
 		color:#000;
 		li{ 
-			position: relative;
+			position: relative; text-align: center; height:175px;
 			&.active{ 
 				background-color:#F05622; 
 				background-image: url(/images/edit-thumbnail-arrow.jpg);
 				background-position: bottom center; background-repeat: no-repeat;
 			}
-			text-align: center; height:155px;
 			a{ 
 				height:auto; padding:10px 5px; background-color:transparent; 
 				color:#000; text-decoration: none; 
 				.textWrap{ position:absolute; width:100%; text-align: center; left:0; }
+				&.cover{ padding-top:31px; } 
 				&.cover .textWrap{ bottom:-40px; }
 				&.profile .textWrap{ bottom:-18px; }
+				&.speaker{ padding-top:24px; }
 				&.speaker .textWrap{ bottom:-31px; }
+				&.reference{ padding-top:32px; }
 				&.reference .textWrap{ bottom:-40px; }
+				&.accomplishments { padding-top:31px; }
 				&.accomplishments .textWrap{ bottom:-35px; }
+				&.speech { padding-top: 32px; }
 				&.speech .textWrap{ bottom:-37px; }
 			}
 		}
 	}
 }
 .sections{ width:100%; height:auto; min-height:100%; position:relative; }
+
+.editable{ position:relative; }
+.editable:before{ position:absolute; top:10px; left:10px; width:100%; opacity: 0.5; }
+.editable.notEmpty:before{ display:none; }
+.editable[data-modal-key=coverCircle]:before{ content: "My Passion And Innovation"; }
+.editable[data-modal-key=coverFooterText]:before{ content: "By taking part in this intern program, I hope to gain better understanding about myself."; }
+.editable[data-modal-key=coverKeywords]:before{ content: "Creativity｜Adaptation｜Perceptive｜Insight"; }
+.editable[data-modal-key=coverSubTitle1]:before{ content: "Be Extraordinary In a Class by Yourself"; }
+.editable[data-modal-key=coverSubTitle2]:before{ content: "Successfully Obtained Academic Credits"; }
+.editable[data-modal-key=coverSubTitle3]:before{ content: "The Five Things I Want to Accomplish in 2016."; }
+.editable[data-modal-key=coverTitle]:before{ content: "Endless passion for ideals"; }
+.editable[data-modal-key=profileBlueContent]:before{ content: "I have a clear vision of how the world should be, and respect law and tradition because they exist for a reason. I tend to believe the best of others, and sensitive to their needs and desires. I am considerate, generous, and very reliable. "; }
+.editable[data-modal-key=profileDescription]:before{ content: "By taking part in this intern program, I hope to gain better understanding about mvyself. Through a series of opportunities and challenges I want to increase self-awareness, and advance my expertise so as to benefit my future career development. "; }
+.editable[data-modal-key=profileGreenContent]:before{ content: "I wanted to live the life, a different life. I didn't want to go to the same place every day and see the same people and do the same job. I wanted interesting challenges."; }
+.editable[data-modal-key=profileGreenName]:before{ content: "“Dare to Differ”"; }
+.editable[data-modal-key=profileName]:before{ content: "I am Amy Chan."; }
+.editable[data-modal-key=speaker1Content]:before{ content: "From Sammy Leung I learned how to train my own quick responses. In my mind he is a smart person. I used to feel being smart is an endowed characteristic. But today he shared some interesting examples in real-time, making me to realize quick responses can be improved by increasing mental awareness of the cause-effect relationship on matters in daily life. "; }
+.editable[data-modal-key=speaker2Content]:before{ content: "From Vennis Ma I learned a lot about how to best present self image. I used to feel I don't need to pay much attention on self image so long as I am very able in substance. But what the teacher said has influenced me a great deal: \"Focus on self image is not to please others but to respect both others and oneself.\" Looking at how a person presents himself you can infer his ability of managing self."; }
+.editable[data-modal-key=speaker3Content]:before{ content: "I learned a lot from Wing Lee I really wish someday I could become a successful person like him. Later some schoolmates told me he and I had something in common. That made me very happy. I will double my effort from now on so that I hope someday I can achieve as much as he does. "; }
+.editable[data-modal-key=speaker4Content]:before{ content: "From speaker Mr. Lai I learned how to deal with pressure. I admire his/her achievement in mountain climbing. Although I usually do not care for athletic activities, B taught me interesting formulas and tips. That makes me feel like wanting to try jogging sometime myself to see whether strengthening faith would help me not give up too easily. "; }
+.editable[data-modal-key=speaker5Content]:before{ content: "From speaker Mr. Wong I learned to improve my money management quotient. I was not good at managing money before. After learning his tips I feel I can accumulate more wealth by changing a lot of my small habits in daily life. The investment know-hows for beginners he taught also helps me become more reflective. "; }
+.editable[data-modal-key=speechName]:before{ content: "My metor"; }
+.editable[data-modal-key=speechText]:before{ content: "See more, work more, and you will gain more"; }
+.editable[data-modal-key=thumbnail1Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail2Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail3Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail4Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail5Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail6Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail7Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail8Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail9Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail10Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail11Text]:before{ content: "Your Caption"; }
+.editable[data-modal-key=thumbnail12Text]:before{ content: "Your Caption"; }
+

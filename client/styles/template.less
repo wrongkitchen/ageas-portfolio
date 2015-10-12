@@ -2,7 +2,7 @@
 .editableTemplate{
 	&.tab-pane.active{
 		.editable{ 
-			border:1px dashed #999; outline: none; 
+			border:1px dashed #999; outline: none; word-break: break-all;
 			p{ margin:0; padding:0; }
 		}
 		.editable.error{ border:1px solid red; overflow-y:scroll; }
@@ -107,6 +107,7 @@
 		h4{ color:#F05622; font-size:28px; margin-bottom:20px; }
 		strong{ margin-top: 5px; display: block; font-size: 18px; }
 	}
+	#characterYes, #characterNo{ width: 100%; height: 50px; margin-bottom: 20px; }
 }
 .profileTemplate{
 	.profileNameDescription{ padding:150px 0 100px 0; }
