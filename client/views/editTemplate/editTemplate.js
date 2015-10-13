@@ -46,8 +46,26 @@ Template.editTemplate.events({
         });
     },
     'click #coverDownloadCaller': function(){
-        $('#downloadCoverCanvas')[0].toBlob(function(blob){
-            saveAs(blob, 'cover.png');
+        var newWindow = window.open('', '_blank');
+            newWindow.document.write('Loading cover image...');
+        Meteor.call('saveCoverImage', $('#downloadCoverCanvas')[0].toDataURL(), function(err, result){
+            if(err){
+                newWindow.close();
+                Bert.alert(err.reason, 'danger');
+                return false;
+            } else {
+                if(result){
+                    var coverImage = CoverImages.findOne(result);
+                    var imageLoadInterval = Meteor.setInterval(function(){
+                        if(coverImage.url()){
+                            Meteor.clearInterval(imageLoadInterval);
+                            newWindow.location.href = coverImage.url();
+                        }
+                    }, 100);
+                } else {
+                    newWindow.close();
+                }
+            }
         });
     },
     'click .tabButton': function(event){

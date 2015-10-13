@@ -159,7 +159,8 @@ a{ color:#ff6633; font-size:14px; text-decoration: underline; }
 .sections{ width:100%; height:auto; min-height:100%; position:relative; }
 
 .editable{ position:relative; }
-.editable:before{ position:absolute; top:10px; left:10px; width:100%; opacity: 0.5; }
+.editable:before{ position:absolute; top:10px; left:10px; width:100%; opacity: 0.5; word-break: normal; }
+.editable[data-modal-key=coverKeywords]:before{ top:20px; }
 .editable.notEmpty:before{ display:none; }
 .editable[data-modal-key=coverCircle]:before{ content: "My Passion And Innovation"; }
 .editable[data-modal-key=coverFooterText]:before{ content: "By taking part in this intern program, I hope to gain better understanding about myself."; }
