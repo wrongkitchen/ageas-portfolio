@@ -6,10 +6,12 @@ Tracker.autorun(function(){
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     $('.editable').removeClass('notEmpty');
     _.each(templateData, function(data, index){
-        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
-            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
-        else
-            $('.editable[data-modal-key=' + index +']').html('');
+        if(typeof(data) === 'string'){
+            if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+                $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+            else
+                $('.editable[data-modal-key=' + index +']').html('');
+        }
     });
 });
 
@@ -119,10 +121,12 @@ Template.editTemplate.onRendered(function(){
 
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     _.each(templateData, function(data, index){
-        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
-            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
-        else
-            $('.editable[data-modal-key=' + index +']').html('');
+        if(typeof(data) === 'string'){
+            if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+                $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+            else
+                $('.editable[data-modal-key=' + index +']').html('');
+        }
     });
 
     medium = new MediumEditor('.editable', {
