@@ -61,6 +61,14 @@ Meteor.methods({
 			}
 		}
 	},
+	saveCoverImage: function(pDataString){
+		var imgID = CoverImages.insert(pDataString);
+		return (imgID && imgID._id) ? imgID._id : false;
+	},
+	getEmailByPhoneNumber: function(pNumber){
+		var user = Meteor.users.findOne({ 'profile.phoneNumber': pNumber });
+		return (user) ? user.emails[0].address : false;
+	},
 	updateUserProfile: function(pObj){
 		if(pObj){
 			return Meteor.users.update({ _id:Meteor.userId() }, { $set : { "profile.name": pObj.name } });

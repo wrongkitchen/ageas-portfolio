@@ -36,6 +36,9 @@ AutoForm.addHooks('register-form', {
 	},
 	onSuccess: function(method, result) {
 		Bert.alert('Please check email and verify your email address', 'success')
-		Router.go('/');
+		$('#register').modal('hide');
+	},
+	onError: function(method, err){
+		Bert.alert(err.reason, 'danger')
 	}
 });

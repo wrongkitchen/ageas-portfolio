@@ -6,10 +6,12 @@ Tracker.autorun(function(){
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     $('.editable').removeClass('notEmpty');
     _.each(templateData, function(data, index){
-        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
-            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
-        else
-            $('.editable[data-modal-key=' + index +']').html('');
+        if(typeof(data) === 'string'){
+            if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+                $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+            else
+                $('.editable[data-modal-key=' + index +']').html('');
+        }
     });
 });
 
@@ -49,8 +51,26 @@ Template.editTemplate.events({
         });
     },
     'click #coverDownloadCaller': function(){
-        $('#downloadCoverCanvas')[0].toBlob(function(blob){
-            saveAs(blob, 'cover.png');
+        var newWindow = window.open('', '_blank');
+            newWindow.document.write('Loading cover image...');
+        Meteor.call('saveCoverImage', $('#downloadCoverCanvas')[0].toDataURL(), function(err, result){
+            if(err){
+                newWindow.close();
+                Bert.alert(err.reason, 'danger');
+                return false;
+            } else {
+                if(result){
+                    var coverImage = CoverImages.findOne(result);
+                    var imageLoadInterval = Meteor.setInterval(function(){
+                        if(coverImage.url()){
+                            Meteor.clearInterval(imageLoadInterval);
+                            newWindow.location.href = coverImage.url();
+                        }
+                    }, 100);
+                } else {
+                    newWindow.close();
+                }
+            }
         });
     },
     'click .tabButton': function(event){
@@ -104,10 +124,12 @@ Template.editTemplate.onRendered(function(){
 
     var templateData = TemplateData.findOne({ user: Meteor.userId() });
     _.each(templateData, function(data, index){
-        if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
-            $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
-        else
-            $('.editable[data-modal-key=' + index +']').html('');
+        if(typeof(data) === 'string'){
+            if(data && data.replace(/<\/?[^>]+(>|$)/g, "").length)
+                $('.editable[data-modal-key=' + index +']').html(data).addClass('notEmpty');
+            else
+                $('.editable[data-modal-key=' + index +']').html('');
+        }
     });
 
     medium = new MediumEditor('.editable', {

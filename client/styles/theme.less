@@ -159,7 +159,8 @@ a{ color:#ff6633; font-size:14px; text-decoration: underline; }
 .sections{ width:100%; height:auto; min-height:100%; position:relative; }
 
 .editable{ position:relative; }
-.editable:before{ position:absolute; top:10px; left:10px; width:100%; opacity: 0.5; }
+.editable:before{ position:absolute; top:10px; left:10px; width:100%; opacity: 0.5; word-break: normal; }
+.editable[data-modal-key=coverKeywords]:before{ top:20px; }
 .editable.notEmpty:before{ display:none; }
 .editable[data-modal-key=coverCircle]:before{ content: "My Passion And Innovation"; }
 .editable[data-modal-key=coverFooterText]:before{ content: "By taking part in this intern program, I hope to gain better understanding about myself."; }
@@ -169,7 +170,7 @@ a{ color:#ff6633; font-size:14px; text-decoration: underline; }
 .editable[data-modal-key=coverSubTitle3]:before{ content: "The Five Things I Want to Accomplish in 2016."; }
 .editable[data-modal-key=coverTitle]:before{ content: "Endless passion for ideals"; }
 .editable[data-modal-key=profileBlueContent]:before{ content: "I have a clear vision of how the world should be, and respect law and tradition because they exist for a reason. I tend to believe the best of others, and sensitive to their needs and desires. I am considerate, generous, and very reliable. "; }
-.editable[data-modal-key=profileDescription]:before{ content: "By taking part in this intern program, I hope to gain better understanding about mvyself. Through a series of opportunities and challenges I want to increase self-awareness, and advance my expertise so as to benefit my future career development. "; }
+.editable[data-modal-key=profileDescription]:before{ content: "By taking part in this intern program, I hope to gain better understanding about myself. Through a series of opportunities and challenges I want to increase self-awareness, and advance my expertise so as to benefit my future career development. "; }
 .editable[data-modal-key=profileGreenContent]:before{ content: "I wanted to live the life, a different life. I didn't want to go to the same place every day and see the same people and do the same job. I wanted interesting challenges."; }
 .editable[data-modal-key=profileGreenName]:before{ content: "“Dare to Differ”"; }
 .editable[data-modal-key=profileName]:before{ content: "I am Amy Chan."; }
