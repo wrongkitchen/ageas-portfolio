@@ -17,13 +17,19 @@ AutoForm.addHooks('register-form', {
 			if(!result){
 				return result;
 			} else {
-				Meteor.call('pairEmailPhoneNumber', function(err, result){
+				console.log(doc);
+				Meteor.call('pairEmailPhoneNumber', doc.email, doc.phoneNumber, function(err, result){
 					if(err){
 						Bert.alert(err.reason, 'danger');
 						return false;
 					}
-					if(result)
+					if(result){
 						_this.result(doc);
+					} else {
+						Bert.alert('Phone number not exist', 'danger');
+						// $('#register-form button[type=submit]').attr('disabled', false);
+						_this.result(false);
+					}
 				});
 			}
 		}

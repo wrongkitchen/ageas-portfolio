@@ -1,6 +1,6 @@
 {
 	"MAIL_URL" : "smtp://wkc.kenji@gmail.com:CA7BSdYgpDu5OvxZEeTLYw@smtp.mandrillapp.com:587",
 	"public":{
-		"ROOT_URL" : "http://103.253.146.233"
+		"ROOT_URL" : "http://intern-portfolio.com"
 	}
 }

@@ -1,8 +1,7 @@
 Meteor.methods({
-	pairEmailPhoneNumber: function(){
-		// check is meteor user exist
-		// compare phone and email
-		return true;
+	pairEmailPhoneNumber: function(pEmail, pPhoneNumber){
+		var phone = Phone.findOne({ email: pEmail, mphone: pPhoneNumber + "" });
+		return (phone) ? true : false;
 	},
 	register: function(doc){
 		var result = check(doc, Schemas.User);
