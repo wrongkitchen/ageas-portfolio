@@ -1,6 +1,9 @@
 {
 	"MAIL_URL" : "smtp://wkc.kenji@gmail.com:CA7BSdYgpDu5OvxZEeTLYw@smtp.mandrillapp.com:587",
 	"public":{
-		"ROOT_URL" : "http://intern-portfolio.com"
+		"ROOT_URL" : "http://intern-portfolio.com",
+		"analyticsSettings": {
+			"Google Analytics" : { "trackingId": "UA-37456538-15" }
+		}
 	}
 }

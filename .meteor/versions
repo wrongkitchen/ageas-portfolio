@@ -75,6 +75,7 @@ mrt:jquery-jcrop@0.0.3
 npm-bcrypt@0.7.8_2
 npm-container@1.1.0
 observe-sequence@1.0.6
+okgrow:analytics@0.4.3
 ordered-dict@1.0.3
 pfafman:photo-up@0.3.2
 raix:eventemitter@0.1.3
