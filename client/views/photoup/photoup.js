@@ -24,11 +24,11 @@ Template.photoup.helpers({
 							if (err){
 								Bert.alert(err.reason, 'danger');
 							} else {
-								Bert.alert('Image saved', 'success');
+								Bert.alert('影像已儲存', 'success');
 							}
 						});
 					} else {
-						Bert.alert('Please select an area', 'success');
+						Bert.alert('請選取影像範圍', 'success');
 					}
 				}
 			}

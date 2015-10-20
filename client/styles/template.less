@@ -38,6 +38,7 @@
 	    text-decoration: underline;
 	    cursor: pointer;
 	}
+	.tips{ position: absolute; top: 430px; left: 735px; width: 240px; text-align: left; font-size: 12px; }
 	.photo-up{
 		width:100%; height:100%;
 		.dropbox.no-image{ 
@@ -246,7 +247,8 @@
 }
 
 .speechTemplate{
-	background-color: #6dc2d4; min-height:600px; padding:160px 0; color:#FFF;
+	background-color: #6dc2d4; min-height:600px; padding:160px 0; color:#FFF; 
+	.container{ position:relative; }
 	.modal-title{ color:#000; text-align: left; }
 	.photo-up{
 		width:100%; height:100%;
@@ -261,6 +263,15 @@
 			background-image: url(/images/speech-upload.png); background-color: transparent;
 			.photo-in{ width:100%; height:100%; }
 		}
+	}
+	.tips1{ position:absolute; top: -30px; left: 80px; }
+	.tips2{ position:absolute; bottom: -70px; right: 90px; text-align: center; }
+	.jcrop-holder{ margin:0 auto; }
+	.filter_title{ display:none; }
+	.card .card-image{
+		margin-left: -10px;
+		#image-preview{ width:300px; }
+		.card-title, .card-tagline{ display:none; }
 	}
 	.speechText{ 
 		width:900px; margin-bottom:5px; font-size:80px; font-weight:bold; line-height:80px; 

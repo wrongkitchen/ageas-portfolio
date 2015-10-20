@@ -25,7 +25,7 @@ Template.userSetting.events({
 			if(err){
 				Bert.alert(err.reason, 'danger');
 			} else {
-				Bert.alert('User profile updated', 'success');
+				Bert.alert('用戶設定已更新', 'success');
 			}
 		});
 	},
@@ -46,16 +46,16 @@ Template.userSetting.events({
 			if(err){
 				Bert.alert(err.reason, 'danger');
 			} else if(newPassword != rePassword){
-				Bert.alert('Password not match', 'danger');
+				Bert.alert('密碼錯誤', 'danger');
 			} else if(current == newPassword){
-				Bert.alert('Current password & new password cannot be the same', 'danger');
+				Bert.alert('當前密碼和新密碼不能相同', 'danger');
 			} else {
 				Accounts.changePassword(current, rePassword, function(err){
 					if(err){
 						Bert.alert(err.reason, 'danger');
 					} else {
 						$('#changePassword')[0].reset()
-						Bert.alert('Password changed', 'success');
+						Bert.alert('密碼已更改', 'success');
 					}
 				});
 			}

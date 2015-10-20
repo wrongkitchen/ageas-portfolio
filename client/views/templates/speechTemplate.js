@@ -15,8 +15,8 @@ Template.speechTemplate.helpers({
 	photoUpOptions: function(){
 		return {
 			loadImage: {
-				maxWidth: 308,
-				maxHeight: 308
+				maxWidth: 600,
+				maxHeight: 600
 			},
 			crop: true,
 			jCrop: { aspectRatio: 1 / 1, boxWidth: 308 },

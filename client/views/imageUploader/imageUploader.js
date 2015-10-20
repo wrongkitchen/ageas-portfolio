@@ -23,10 +23,10 @@ Template.imageUploader.events({
 			if(err) {
 				Bert.alert(err.reason, 'danger');
 			} else if(!result){
-				Bert.alert('Please select an area', 'danger');
+				Bert.alert('請選取影像範圍', 'danger');
 			} else {
 				Session.set('previewImageSrc', '');
-				Bert.alert('Image cropped', 'success');
+				Bert.alert('影像已裁剪', 'success');
 			}
 			$('#fileUploadForm')[0].reset();
 		});

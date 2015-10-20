@@ -7,7 +7,7 @@ Template.resetPassword.events({
 		if(!rePassword) $('#reset-rePassword').parent().addClass('has-error');
 		if(!rePassword || !newPassword) return false;
 		if(newPassword != rePassword){
-			Bert.alert('Password not match', 'danger');
+			Bert.alert('密碼錯誤', 'danger');
 			return false;
 		} else {
 			var token = Session.get('resetToken');
@@ -16,7 +16,7 @@ Template.resetPassword.events({
 					Bert.alert(err.reason, 'danger');
 				} else {
 					Session.set('resetToken', null);
-					Bert.alert('Password reset', 'success');
+					Bert.alert('密碼已重置', 'success');
 				}
 			});
 		}

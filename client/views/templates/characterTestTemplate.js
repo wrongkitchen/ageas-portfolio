@@ -75,7 +75,7 @@ Template.characterTestTemplate.onRendered(function(){
 					if(err)
 						Bert.alert(err.reason, 'danger');
 					else
-						Bert.alert('Characteristics saved', 'success');
+						Bert.alert('型格分析已儲存', 'success');
 				});
 			}
 		}

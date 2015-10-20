@@ -13,7 +13,7 @@ Template.forgetPassword.events({
 							Bert.alert(err.reason, 'danger');
 						} else {
 							$('#forget-password')[0].reset();
-							Bert.alert('Please check email & reset password', 'success');
+							Bert.alert('請檢查電子郵件並重置密碼', 'success');
 							Router.go('/');
 						}
 					});
