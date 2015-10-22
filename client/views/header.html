@@ -4,6 +4,9 @@
 			<a target="_blank" href="http://ageasinternship.com"><div class="starLogo pull-left"></div></a>
 			<a target="_blank" href="http://www.ageas.com.hk/"><div class="ageasLogo pull-left"></div></a>
 			<div class="headerNav pull-right">
+				{{#unless currentUser }}
+					<div class="navBtn text"><a href="/">主頁</a></div>
+				{{/unless}}
 				<div class="navBtn text"><a href="/about">關於E-PORTFOLIO</a></div>
 				{{#if currentUser }}
 					<div class="navBtn text"><a href="/">分頁簡介</a></div>
