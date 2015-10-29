@@ -11,13 +11,13 @@ Meteor.startup(function () {
 
 	// A Function that takes a user object and returns a String for the subject line of the email.
 	Accounts.emailTemplates.verifyEmail.subject = function(user) {
-		return 'Confirm Your Email Address';
+		return '啟動您的「星級財策領袖實習計劃2015 - 網上履歷」帳戶';
 	};
 
 	// A Function that takes a user object and a url, and returns the body text for the email.
 	// Note: if you need to return HTML instead, use Accounts.emailTemplates.verifyEmail.html
 	Accounts.emailTemplates.verifyEmail.text = function(user, url) {
-		return 'click on the following link to verify your email address: ' + url;
+		return '您好﹗\n\n感謝您註冊由富通保險主辦的「星級財策領袖實習計劃2015 - 網上履歷」!\n請馬上點擊以下註冊確認連結，以啟動您的帳戶：\n\n' + url + '\n\n(這只是一封系統自動發送的郵件，請不要直接回覆。)\n\n富通保險';
 	};
 
 });

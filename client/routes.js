@@ -1,3 +1,10 @@
+var trackMedia = function(pParam){
+	var media = pParam.query.m;
+	if(media){
+		analytics.track("Come from " + media);
+	}
+};
+
 Router.configure({
 	layoutTemplate: 'layout',
 	loadingTemplate: 'loading'
@@ -14,7 +21,7 @@ Router.route('/edit-template', {
 Router.route('/preview-template', { 
 	controller: 'MemberController',
 	onAfterAction: function(){
-        Session.set('hash', this.params.hash);
+		Session.set('hash', this.params.hash);
 	}
 });
 Router.route('/preview-template/:_id', { 
@@ -23,7 +30,7 @@ Router.route('/preview-template/:_id', {
 		return { previewUserId: this.params._id };
 	},
 	onAfterAction: function(){
-        Session.set('hash', this.params.hash);
+		Session.set('hash', this.params.hash);
 	}
 });
 // testing
@@ -32,6 +39,7 @@ Router.route('/photo-up', { name: 'photoup', controller: 'MemberController' });
 
 MemberController = RouteController.extend({
 	onBeforeAction: function () {
+		trackMedia(this.params);
 		if(Meteor.userId())
 			this.next();
 		else
@@ -40,6 +48,7 @@ MemberController = RouteController.extend({
 });
 GuestController = RouteController.extend({
 	onBeforeAction: function () {
+		trackMedia(this.params);
 		if(Meteor.userId())
 			Router.go('/');
 		else
@@ -48,6 +57,7 @@ GuestController = RouteController.extend({
 });
 MainController = RouteController.extend({
 	action: function() {
+		trackMedia(this.params);
 		if(Meteor.userId())
 			this.render('home');
 		else
