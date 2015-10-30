@@ -1,5 +1,5 @@
 var trackMedia = function(pParam){
-	var media = pParam.query.m;
+	var media = pParam.query.media;
 	if(media){
 		analytics.track("Come from " + media);
 	}
