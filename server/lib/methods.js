@@ -16,11 +16,14 @@ Meteor.methods({
 		}
 	},
 	cropImage: function(imageID, cp){
-		var image = Images.findOne(imageID);
-		var readStream = image.createReadStream('images');
-		var writeStream = image.createWriteStream('images');
+		var readStream = Images.findOne(imageID).createReadStream('images');
+		var writeStream = Images.findOne(imageID).createWriteStream('images');
 		if(cp.w == 0 || cp.h == 0) return false;
-		gm(readStream).crop(cp.w, cp.h, cp.x, cp.y).stream().pipe(writeStream);
+		gm(readStream).crop(cp.w, cp.h, cp.x, cp.y).stream(function(err, stdout, stderr){
+			console.log(err);
+			console.log(stderr);
+			stdout.pipe(writeStream);
+		});
 		return imageID;
 	},
 	saveCharacter: function(pType){
