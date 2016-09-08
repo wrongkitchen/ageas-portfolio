@@ -26,3 +26,5 @@ underscore
 riaan53:blueimp-canvas-to-blob
 cfs:filesaver
 okgrow:analytics
+standard-minifier-css
+standard-minifier-js
