@@ -43,7 +43,7 @@ Template.editTemplate.events({
         FB.ui({
             method: 'share',
             caption: '即刻登入：http://ftlifeinternship.com/',
-            description: '想知道更多關於 「星級財策領袖實習計劃2015」嘅精彩詳情',
+            description: '想知道更多關於 「星級財策領袖實習計劃2017」嘅精彩詳情',
             picture: Meteor.settings['public'].ROOT_URL + '/images/fb-share-200x200.png',
             href: Meteor.settings['public'].ROOT_URL + '/preview-template/' + Meteor.userId() + '#' + href,
         }, function(response){

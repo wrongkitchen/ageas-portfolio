@@ -25,7 +25,7 @@ AutoForm.addHooks('register-form', {
 					if(result){
 						_this.result(doc);
 					} else {
-						Bert.alert('電話號碼不存在 (請先登記成為「星級財策領袖實習計劃 2015」! 或使用已登記之電話號碼)', 'danger');
+						Bert.alert('電話號碼不存在 (請先登記成為「星級財策領袖實習計劃 2017」! 或使用已登記之電話號碼)', 'danger');
 						// $('#register-form button[type=submit]').attr('disabled', false);
 						_this.result(false);
 					}
